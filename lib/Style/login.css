@@ -1,0 +1,40 @@
+#form_login,
+#new_account {
+    max-width: 350px;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+#form_login {
+    margin-top: 2rem;
+}
+
+a#forgotpassword {
+    position: absolute !important;
+    top: -70px !important;
+    right: 20px !important;
+}
+
+#submit button {
+    width: 100% !important;
+    height: 38px !important;
+}
+
+#new_account {
+    text-align: center !important;
+}
+
+div#alert_login {
+    min-height: 50px !important;
+    max-width: 328px !important;
+    padding-left: 1rem !important;
+}
+
+span#msg {
+    font-size: 0.9rem !important;
+}
+
+#menu,
+#footer {
+    display: none !important;
+}

@@ -1,0 +1,25 @@
+html,
+body {
+    color: #fafafa;
+    background-color: #464646;
+}
+
+.borda-topo-vermelha {
+    border-top: solid #ff0909;
+    border-radius: 5px;
+}
+
+a {
+    color: #ff7a7a;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff4a4a;
+}
+
+div.redes,
+a.redes {
+    background-color: transparent !important;
+    border: none !important;
+}

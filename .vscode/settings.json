@@ -1,0 +1,4 @@
+{
+    "html.format.templating": true,
+    "php.validate.run": "onSave"
+}
