@@ -39,8 +39,6 @@ class Core
             $this->params = $url;
         }
 
-
-
         array_unshift($this->params, 'dark', $this->title);
         $this->controller = new $this->controller;
 
