@@ -1,0 +1,25 @@
+{% extends 'Template/structure.html' %}
+
+{% block theme %}{{theme}}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="http://localhost/aniplus/lib/Style/error.css">
+<style>
+    #footer {
+        position: absolute;
+        bottom: 0px;
+    }
+</style>
+{% endblock %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 my-4" style="text-align: center;">
+        <h1>Página Inexistente!</h1>
+        <img class="img-fluid" src="http://localhost/aniplus/lib/Style/Images/404-page-not-found.png" />
+        <p>Retorne à página inicial clicando <a href="home">aqui</a></p>
+    </div>
+</div>
+{% endblock %}

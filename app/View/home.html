@@ -1,15 +1,124 @@
 {% extends 'Template/structure.html' %}
 
-{% block theme %}
-{{theme}}
+{% block css %}
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<link rel="stylesheet" href="http://localhost/aniplus/lib/Style/home.css">
 {% endblock %}
 
 {% block title %}
 {{title}}
 {% endblock %}
 
+{% block slide %}
+<div class="swiper" id="destaques">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="
+        background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+        background-position: center;
+        background-size: cover;
+        ">
+        </div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
+{% endblock %}
+
 {% block content %}
+
+<div class="row" id="populares">
+    <div class="col-md-12">
+        <h5 class="section-title">Populares</h5>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="
+            background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+            background-position: center;
+            background-size: cover;
+            "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="series">
+    <div class="col-md-12">
+        <h5 class="section-title">Séries</h5>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="
+                background-image: url(http://localhost/aniplus/lib/Style/Images/one-piece.jpg);
+                background-position: center;
+                background-size: cover;
+                "></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block footer %}
+{% endblock %}
+
+{% block additionalScripts %}
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="http://localhost/aniplus/lib/Js/home.js"></script>
+<script>
+    $("#content").removeClass("container");
+    $("#content").addClass("container-fluid");
+</script>
 {% endblock %}

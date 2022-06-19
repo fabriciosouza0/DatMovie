@@ -6,14 +6,12 @@ class Core
 {
     private $controller;
     private $action;
-    private $title;
     private $params;
 
     public function __construct()
     {
         $this->controller = 'app\Controller\HomeController';
         $this->action = 'index';
-        $this->title = PREFIX . 'Home';
         $this->params = array();
     }
 
@@ -23,7 +21,6 @@ class Core
             $url = explode('/', $url['url']);
 
             $this->controller = CONTROLLER . ucfirst($url[0]) . SUFIX;
-            $this->title = PREFIX . ucfirst($url[0]);
             array_shift($url);
 
             if (isset($url[0]) && $url[0] != '') {
@@ -39,7 +36,6 @@ class Core
             $this->params = $url;
         }
 
-        array_unshift($this->params, 'dark', $this->title);
         $this->controller = new $this->controller;
 
         if (!method_exists($this->controller, $this->action)) {

@@ -1,30 +1,27 @@
 <?php
 
-class Login
+namespace app\Model;
+
+use Connection;
+use PDO;
+
+class LoginModel
 {
     private $email;
     private $senha;
     private $msg;
     private $sessao;
 
-    public function __construct($email, $senha)
+    public function login($email, $senha)
     {
-        if (($_SERVER["REQUEST_METHOD"] != "POST") || (empty($_POST["email"])) || (empty($_POST["senha"]))) {
-            $this->msg = array("msg" => "Prencha os campos corretamente!", "estado" => false);
-            echo json_encode($this->msg);
-            return;
-        }
-
         $this->email = $email;
         $this->senha = $senha;
-    }
 
-    public function login($email, $senha, $con)
-    {
+        $con = Connection::connect();
         $sql = "SELECT nome, email, senha FROM usuario WHERE email = :email AND senha = :senha";
         $stmt = $con->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', $senha);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':senha', $this->senha);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -48,7 +45,7 @@ class Login
 
     public function setLoginSession($sessao)
     {
-        if (!isset($_SESSION)) {
+        if (!isset($_SESSION['user'])) {
             session_start();
             foreach ($sessao as $i => $value) {
                 $_SESSION["'" . $i . "'"] = $value;
@@ -58,12 +55,10 @@ class Login
 
     public function logout()
     {
-        if (isset($_SESSION)) {
+        if (isset($_SESSION['user'])) {
             session_unset();
             session_destroy();
         }
-
-        return;
     }
 
     public function getEmail()

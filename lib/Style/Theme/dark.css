@@ -4,11 +4,6 @@ body {
     background-color: #464646;
 }
 
-.borda-topo-vermelha {
-    border-top: solid #ff0909;
-    border-radius: 5px;
-}
-
 a {
     color: #ff7a7a;
 }

@@ -4,7 +4,7 @@ define('PREFIX', 'AniPlus - ');
 define('SUFIX', 'Controller');
 define('VENDOR', 'app\\');
 define('CONTROLLER', VENDOR . 'Controller\\');
-define('MODEL', VENDOR . 'app\\Model\\');
+define('MODEL', VENDOR . 'Model\\');
 
 require_once 'vendor/autoload.php';
 
