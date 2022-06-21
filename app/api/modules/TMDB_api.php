@@ -7,10 +7,10 @@ use Exception;
 
 class TMDB_api
 {
-    private $key = null;
-    private $error = null;
+    private $key;
+    private $error;
 
-    public function __construct($key = null)
+    public function __construct($key = null, $params = array())
     {
         $this->key = TMDB_config::getTmdbApiKey();
 
@@ -49,13 +49,52 @@ class TMDB_api
         return $this->error;
     }
 
+    public function destaques($qtd = 3)
+    {
+        $params = array(
+            'language' => 'pt-BR',
+        );
+
+        try {
+            $data = $this->request('movie/top_rated', $params);
+        } catch (Exception $e) {
+            $this->error = true;
+            return $e->getMessage();
+        }
+
+        $destaques = array();
+
+        for ($i = 0; $i < $qtd; $i++) {
+            array_push($destaques, $data['results'][$i]);
+        }
+
+        return $destaques;
+    }
+
     public function filmesPopulares($page)
     {
         $params = array(
+            'language' => 'pt-BR',
             'page' => $page
         );
         try {
             $data = $this->request('movie/popular', $params);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function seriesPopulares($page)
+    {
+        $params = array(
+            'language' => 'pt-BR',
+            'page' => $page
+        );
+        try {
+            $data = $this->request('tv/popular', $params);
         } catch (Exception $e) {
             $this->erro = true;
             return $e->getMessage();

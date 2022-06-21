@@ -12,20 +12,25 @@
 {% block slide %}
 <div class="swiper" id="destaques">
     <div class="swiper-wrapper">
+        {% for destaque in destaques %}
         <div class="swiper-slide" style="
-        background-image: url(http://localhost/aniplus/app/lib/Style/Images/one-piece.jpg);
-        background-position: center;
-        background-size: cover;
-        ">
+            display: flex;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original{{destaque.backdrop_path}});
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            ">
+            <article class="title-destaque" style="width: 30%;">
+                <h3>{{destaque.original_title}}</h3>
+                <p class="text-justify">{{destaque.overview}}</p>
+            </article>
+            <article>
+                <a href="http://"></a><img class="img-destaque" style="height: 500px;"
+                src="https://image.tmdb.org/t/p/original{{destaque.poster_path}}" />
+            </article>
         </div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
+        {% endfor %}
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -37,14 +42,16 @@
 
 <div class="row" id="populares">
     <div class="col-md-12">
-        <h5 class="section-title">Populares</h5>
+        <h5 class="section-title">Filmes Populares</h5>
         <div class="swiper">
             <div class="swiper-wrapper">
+                {% for filme in filmes_populares.results %}
                 <div class="swiper-slide" style="
-                background-image: url(http://localhost/aniplus/app/lib/Style/Images/one-piece.jpg);
-                background-position: center;
-                background-size: cover;
-                "></div>
+                    background-image: url(https://image.tmdb.org/t/p/original{{filme.poster_path}});
+                    background-position: center;
+                    background-size: cover;
+                    "></div>
+                {% endfor %}
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -54,14 +61,16 @@
 
 <div class="row" id="series">
     <div class="col-md-12">
-        <h5 class="section-title">Séries</h5>
+        <h5 class="section-title">Séries Populares</h5>
         <div class="swiper">
             <div class="swiper-wrapper">
+                {% for serie in series_populares.results %}
                 <div class="swiper-slide" style="
-                background-image: url(http://localhost/aniplus/app/lib/Style/Images/one-piece.jpg);
-                background-position: center;
-                background-size: cover;
-                "></div>
+                    background-image: url(https://image.tmdb.org/t/p/original{{serie.poster_path}});
+                    background-position: center;
+                    background-size: cover;
+                    "></div>
+                {% endfor %}
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

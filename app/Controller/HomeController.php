@@ -21,6 +21,9 @@ class HomeController
         $template = $twig->load('home.html');
 
         $data = array(
+            'destaques' => HomeModel::destaques(),
+            'filmes_populares' => HomeModel::filmes_populares(1),
+            'series_populares' => HomeModel::series_populares(1),
             'title' => Config::getPrefix() . 'Home'
         );
 
