@@ -1,11 +1,5 @@
 <?php
 
-define('PREFIX', 'AniPlus - ');
-define('SUFIX', 'Controller');
-define('VENDOR', 'app\\');
-define('CONTROLLER', VENDOR . 'Controller\\');
-define('MODEL', VENDOR . 'Model\\');
-
 require_once 'vendor/autoload.php';
 
 $url = $_REQUEST;

@@ -2,10 +2,10 @@
 
 namespace app\Controller;
 
+use app\lib\config\Config;
+
 class CadastroController
 {
-    const TITLE = PREFIX.'Cadastro';
-
     public function index()
     {
         $loader = new \Twig\Loader\FilesystemLoader('app/View');
@@ -13,7 +13,7 @@ class CadastroController
         $template = $twig->load('cadastro.html');
 
         $params = array(
-            'title' => $this->TITLE
+            'title' => Config::getPrefix() . 'Cadastro'
         );
 
         echo $twig->render($template, $params);

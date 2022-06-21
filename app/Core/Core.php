@@ -2,6 +2,8 @@
 
 namespace app\Core;
 
+use app\lib\config\Config;
+
 class Core
 {
     private $controller;
@@ -20,7 +22,7 @@ class Core
         if (isset($url['url'])) {
             $url = explode('/', $url['url']);
 
-            $this->controller = CONTROLLER . ucfirst($url[0]) . SUFIX;
+            $this->controller = Config::getController() . ucfirst($url[0]) . Config::getSufix();
             array_shift($url);
 
             if (isset($url[0]) && $url[0] != '') {
@@ -29,8 +31,8 @@ class Core
             }
 
             if (!class_exists($this->controller)) {
-                $this->controller = CONTROLLER . 'ErroController';
-                $this->title = PREFIX . 'Página não encontrada';
+                $this->controller = Config::getController() . 'ErroController';
+                $this->title = Config::getPrefix() . 'Página não encontrada';
             }
 
             $this->params = $url;

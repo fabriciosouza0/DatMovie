@@ -2,17 +2,16 @@
 
 namespace app\Controller;
 
+use app\lib\config\Config;
 use app\Model\LoginModel;
 
 class LoginController
 {
-    const TITLE = PREFIX . 'Login';
-
-    private $login;
+    private $loginModel;
 
     public function __construct()
     {
-        $this->login = new LoginModel();
+        $this->loginModel = new LoginModel();
     }
 
     public function index()
@@ -22,7 +21,7 @@ class LoginController
         $template = $twig->load('login.html');
 
         $params = array(
-            'title' => PREFIX . 'Login'
+            'title' => Config::getPrefix() . 'Login'
         );
 
         echo $twig->render($template, $params);
@@ -30,6 +29,6 @@ class LoginController
 
     public function login($email, $senha)
     {
-        $this->login($email, $senha);
+        $this->loginModel->login($email, $senha);
     }
 }

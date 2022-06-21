@@ -2,6 +2,7 @@
 
 namespace app\Controller;
 
+use app\lib\config\Config;
 use app\Model\HomeModel;
 
 class HomeController
@@ -20,13 +21,10 @@ class HomeController
         $template = $twig->load('home.html');
 
         $data = array(
-            'title' => PREFIX.'Home'
+            'title' => Config::getPrefix() . 'Home'
         );
 
         echo $twig->render($template, $data);;
     }
 
-    private function fillContent() {
-        HomeModel::getDestaques();
-    }
 }

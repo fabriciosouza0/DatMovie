@@ -2,6 +2,8 @@
 
 namespace app\Controller;
 
+use app\lib\config\Config;
+
 class ErroController
 {
     public function index()
@@ -11,7 +13,7 @@ class ErroController
         $template = $twig->load('error.html');
 
         $params = array(
-            'title' => PREFIX.'Página Inexistente'
+            'title' => Config::getPrefix() . 'Página Inexistente'
         );
 
         echo $twig->render($template, $params);

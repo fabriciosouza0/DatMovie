@@ -1,5 +1,11 @@
 <?php
 
+namespace app\lib\Database;
+
+use Exception;
+use PDO;
+use PDOException;
+
 abstract class Connection
 {
     private static $banco = 'gerenciamentopedagogico';
