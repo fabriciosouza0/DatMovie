@@ -14,19 +14,23 @@ const destaques = new Swiper("#destaques", {
 
 const populares = new Swiper("#populares .swiper", {
     breakpoints: {
-        320: {
+        375: {
             slidesPerView: 2,
             spaceBetween: 10
         },
-        480: {
+        576: {
             slidesPerView: 3,
             spaceBetween: 10
         },
-        640: {
+        768: {
             slidesPerView: 4,
             spaceBetween: 10
         },
-        768: {
+        992: {
+            slidesPerView: 5,
+            spaceBetween: 10
+        },
+        1200: {
             slidesPerView: 6,
             spaceBetween: 10
         }
@@ -42,19 +46,23 @@ const populares = new Swiper("#populares .swiper", {
 
 const series = new Swiper("#series .swiper", {
     breakpoints: {
-        320: {
+        375: {
             slidesPerView: 2,
             spaceBetween: 10
         },
-        480: {
+        576: {
             slidesPerView: 3,
             spaceBetween: 10
         },
-        640: {
+        768: {
             slidesPerView: 4,
             spaceBetween: 10
         },
-        768: {
+        992: {
+            slidesPerView: 5,
+            spaceBetween: 10
+        },
+        1200: {
             slidesPerView: 6,
             spaceBetween: 10
         }

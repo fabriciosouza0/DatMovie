@@ -3,17 +3,21 @@
     height: 600px;
 }
 
-div.row div.swiper{
+#destaques div.preview-body {
+    position:absolute;
+    top: 0px;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: 500px;
+}
+
+div.row div.swiper {
     width: 100%;
     height: 250px;
 }
 
 div.row div.swiper:last-child {
     margin-bottom: 2rem;
-}
-
-.col-md-12 {
-    padding-right: 0px!important;
 }
 
 .title-destaque {
@@ -26,4 +30,26 @@ div.row div.swiper:last-child {
 
 .title-destaque p {
     text-indent: 1.5rem;
+}
+
+.preview-body .preview-header,
+.preview-body .preview-content {
+    visibility: hidden;
+}
+
+div.preview-body {
+    display: flex;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+div.preview-body:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+
+div.preview-body:hover .preview-content {
+    visibility: visible;
 }

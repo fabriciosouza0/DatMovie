@@ -10,31 +10,45 @@
 {% endblock %}
 
 {% block slide %}
-<div class="swiper" id="destaques">
-    <div class="swiper-wrapper">
-        {% for destaque in destaques %}
-        <div class="swiper-slide" style="
-            display: flex;
-            text-align: center;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original{{destaque.backdrop_path}});
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover;
-            ">
-            <article class="title-destaque" style="width: 30%;">
-                <h3>{{destaque.original_title}}</h3>
-                <p class="text-justify">{{destaque.overview}}</p>
-            </article>
-            <article>
-                <a href="http://"></a><img class="img-destaque" style="height: 500px;"
-                src="https://image.tmdb.org/t/p/original{{destaque.poster_path}}" />
-            </article>
+<div class="borda-baixo-vermelha" id="slide_container">
+    <div class="swiper" id="destaques">
+        <div class="swiper-wrapper">
+            {% for destaque in destaques %}
+            {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+            {% if destaque.poster_path != null %}
+            {% set img_path = 'https://image.tmdb.org/t/p/original' ~ destaque.poster_path %}
+            {% endif %}
+            <div class="swiper-slide" style="
+                display: flex;
+                text-align: center;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original{{destaque.backdrop_path}});
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;">
+                <article>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img class="img-thumbnail" style="height: 500px!important;" src="{{img_path}}" />
+                                <a href="filme/detalhes/{{destaque.id}}">
+                                    <div class="preview-body">
+                                        <div class="preview-content">
+                                            <i class="fa-solid fa-play fa-2xl"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
 </div>
 {% endblock %}
 
@@ -46,11 +60,23 @@
         <div class="swiper">
             <div class="swiper-wrapper">
                 {% for filme in filmes_populares.results %}
+                {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+                {% if filme.poster_path != null %}
+                {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
+                {% endif %}
                 <div class="swiper-slide" style="
-                    background-image: url(https://image.tmdb.org/t/p/original{{filme.poster_path}});
+                    background-image: url({{img_path}});
                     background-position: center;
                     background-size: cover;
-                    "></div>
+                    ">
+                    <a href="filme/detalhes/{{filme.id}}">
+                        <div class="preview-body">
+                            <div class="preview-content">
+                                <i class="fa-solid fa-play fa-2xl"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 {% endfor %}
             </div>
             <div class="swiper-button-next"></div>
@@ -60,16 +86,28 @@
 </div>
 
 <div class="row" id="series">
-    <div class="col-md-12">
+    <div class="col-md-12" style="padding-right: 0px!important;">
         <h5 class="section-title">Séries Populares</h5>
         <div class="swiper">
             <div class="swiper-wrapper">
                 {% for serie in series_populares.results %}
+                {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+                {% if serie.poster_path != null %}
+                {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
+                {% endif %}
                 <div class="swiper-slide" style="
-                    background-image: url(https://image.tmdb.org/t/p/original{{serie.poster_path}});
+                    background-image: url({{img_path}});
                     background-position: center;
                     background-size: cover;
-                    "></div>
+                    ">
+                    <a href="filme/detalhes/{{serie.id}}">
+                        <div class="preview-body">
+                            <div class="preview-content">
+                                <i class="fa-solid fa-play fa-2xl"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 {% endfor %}
             </div>
             <div class="swiper-button-next"></div>
@@ -86,8 +124,4 @@
 {% block additionalScripts %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="http://localhost/aniplus/app/lib/Js/home.js"></script>
-<script>
-    $("#content").removeClass("container");
-    $("#content").addClass("container-fluid");
-</script>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 namespace app\Model;
 
-use Connection;
+use app\lib\Database\Connection;
 use PDO;
 
 class LoginModel
