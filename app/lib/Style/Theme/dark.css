@@ -1,7 +1,11 @@
 html,
 body {
     color: #fafafa;
-    background-color: #464646;
+    background-color: #000;
+}
+
+.bg-dark {
+    background-color: #23252b!important;
 }
 
 a {

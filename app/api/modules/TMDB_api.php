@@ -61,12 +61,13 @@ class TMDB_api
             $this->error = true;
             return $e->getMessage();
         }
-
+        shuffle($data['results']);
         $destaques = array();
-
+        
         for ($i = 0; $i < $qtd; $i++) {
             array_push($destaques, $data['results'][$i]);
         }
+        
 
         return $destaques;
     }
@@ -95,6 +96,22 @@ class TMDB_api
         );
         try {
             $data = $this->request('tv/popular', $params);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function detalhesDoFilme($id)
+    {
+        $params = array(
+            'language' => 'pt-BR'
+        );
+
+        try {
+            $data = $this->request('movie/'.$id, $params);
         } catch (Exception $e) {
             $this->erro = true;
             return $e->getMessage();

@@ -1,6 +1,6 @@
 {% extends 'Template/structure.html' %}
 
-{% block theme %}{{theme}}{% endblock %}
+{% block css %}{% endblock %}
 
 {% block title %}{{title}}{% endblock %}
 
@@ -12,4 +12,10 @@
         <p>Retorne à página inicial clicando <a href="http://localhost/aniplus/">aqui</a></p>
     </div>
 </div>
+<style>
+    #footer {
+        position: relative;
+        bottom: 0px;
+    }
+</style>
 {% endblock %}

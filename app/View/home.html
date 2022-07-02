@@ -10,29 +10,23 @@
 {% endblock %}
 
 {% block slide %}
-<div class="borda-baixo-vermelha" id="slide_container">
-    <div class="swiper" id="destaques">
+<div id="slide_container">
+    <div class="container swiper" id="destaques">
         <div class="swiper-wrapper">
             {% for destaque in destaques %}
             {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
             {% if destaque.poster_path != null %}
             {% set img_path = 'https://image.tmdb.org/t/p/original' ~ destaque.poster_path %}
             {% endif %}
-            <div class="swiper-slide" style="
-                display: flex;
-                text-align: center;
-                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original{{destaque.backdrop_path}});
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: cover;">
+            <div class="swiper-slide" data-background="{{destaque.backdrop_path}}"
+                style="display: flex; text-align: center;">
                 <article>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <img class="img-thumbnail" style="height: 500px!important;" src="{{img_path}}" />
+                                <img class="img-thumbnail" src="{{img_path}}" />
                                 <a href="filme/detalhes/{{destaque.id}}">
-                                    <div class="preview-body">
+                                    <div class="preview-body" style="width: calc(100% - 30px); left: 15px;">
                                         <div class="preview-content">
                                             <i class="fa-solid fa-play fa-2xl"></i>
                                         </div>
@@ -57,61 +51,79 @@
 <div class="row" id="populares">
     <div class="col-md-12">
         <h5 class="section-title">Filmes Populares</h5>
-        <div class="swiper">
-            <div class="swiper-wrapper">
+        <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
+        <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
+            <div class="swiper-wrapper" >
                 {% for filme in filmes_populares.results %}
                 {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
                 {% if filme.poster_path != null %}
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
                 {% endif %}
-                <div class="swiper-slide" style="
-                    background-image: url({{img_path}});
-                    background-position: center;
-                    background-size: cover;
-                    ">
+                <a href="filme/detalhes/{{filme.id}}"></a>
+                <div class="swiper-slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12" style="text-align: center; padding-top: 15px;">
+                                <img class="img-fluid" src="{{img_path}}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 style="text-align: center;" class="section-title font-weight-bold">{{filme.title}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="filme/detalhes/{{filme.id}}">
                         <div class="preview-body">
-                            <div class="preview-content">
-                                <i class="fa-solid fa-play fa-2xl"></i>
-                            </div>
                         </div>
                     </a>
                 </div>
+                </a>
                 {% endfor %}
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next" id="next"></div>
+            <div class="swiper-button-prev" id="prev"></div>
         </div>
     </div>
 </div>
 
-<div class="row" id="series">
-    <div class="col-md-12" style="padding-right: 0px!important;">
+<div class="row" id="populares">
+    <div class="col-md-12">
         <h5 class="section-title">Séries Populares</h5>
-        <div class="swiper">
+        <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
+        <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
             <div class="swiper-wrapper">
                 {% for serie in series_populares.results %}
                 {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
                 {% if serie.poster_path != null %}
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
                 {% endif %}
-                <div class="swiper-slide" style="
-                    background-image: url({{img_path}});
-                    background-position: center;
-                    background-size: cover;
-                    ">
-                    <a href="filme/detalhes/{{serie.id}}">
-                        <div class="preview-body">
-                            <div class="preview-content">
-                                <i class="fa-solid fa-play fa-2xl"></i>
+                <a href="serie/detalhes/{{serie.id}}"></a>
+                <div class="swiper-slide">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12" style="text-align: center; padding-top: 15px;">
+                                <img class="img-fluid" src="{{img_path}}" />
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 style="text-align: center;" class="section-title font-weight-bold">{{serie.name}}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="filme/detalhes/{{filme.id}}">
+                        <div class="preview-body">
                         </div>
                     </a>
                 </div>
+                </a>
                 {% endfor %}
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="f-2rem swiper-button-next"></div>
+            <div class="f-2rem swiper-button-prev"></div>
         </div>
     </div>
 </div>
@@ -124,4 +136,6 @@
 {% block additionalScripts %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="http://localhost/aniplus/app/lib/Js/home.js"></script>
+<script>
+</script>
 {% endblock %}

@@ -10,6 +10,19 @@ const destaques = new Swiper("#destaques", {
     autoplay: {
         delay: 4000,
     },
+
+    on: {
+        init: function (i) {
+            var background = $(i.slides[i.activeIndex]).data('background');
+            console.log(background);
+            $('#slide_container').css('backgroundImage', 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original' + background);
+        },
+        slideChange: function (i) {
+            var background = $(i.slides[i.activeIndex]).data('background');
+            console.log(background);
+            $('#slide_container').css('backgroundImage', 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original' + background);
+        },
+    },
 });
 
 const populares = new Swiper("#populares .swiper", {
@@ -23,14 +36,18 @@ const populares = new Swiper("#populares .swiper", {
             spaceBetween: 10
         },
         768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 10
         },
         992: {
+            slidesPerView: 4,
+            spaceBetween: 10
+        },
+        1280: {
             slidesPerView: 5,
             spaceBetween: 10
         },
-        1200: {
+        1920: {
             slidesPerView: 6,
             spaceBetween: 10
         }
@@ -55,14 +72,18 @@ const series = new Swiper("#series .swiper", {
             spaceBetween: 10
         },
         768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 10
         },
         992: {
+            slidesPerView: 4,
+            spaceBetween: 10
+        },
+        1280: {
             slidesPerView: 5,
             spaceBetween: 10
         },
-        1200: {
+        1920: {
             slidesPerView: 6,
             spaceBetween: 10
         }

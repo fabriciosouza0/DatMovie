@@ -17,15 +17,15 @@ body {
 }
 
 .borda-topo-vermelha {
-    border-top: solid #ff0909!important;
-    border-top-left-radius: 5px!important;
-    border-top-right-radius: 5px!important;
+    border-top: solid #ff0909 !important;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
 }
 
 .borda-baixo-vermelha {
-    border-bottom: solid #ff0909!important;
-    border-bottom-left-radius: 5px!important;
-    border-bottom-right-radius: 5px!important;
+    border-bottom: solid #ff0909 !important;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
 }
 
 div .div-logo-lg {
@@ -69,7 +69,7 @@ div#destaques .swiper-wrapper .swiper-slide {
 }
 
 .section-title {
-    padding: 2rem 0 1rem;
+    padding: 1rem 0 0rem;
 }
 
 #slide_container {
@@ -77,17 +77,15 @@ div#destaques .swiper-wrapper .swiper-slide {
 }
 
 #menu {
-    box-shadow:
+    /* box-shadow:
         0px 2.5px 4.8px rgba(0, 0, 0, 0.415),
-        0px 20px 38px rgba(0, 0, 0, 0.83);
+        0px 20px 38px rgba(0, 0, 0, 0.83); */
     z-index: 100;
 }
 
 #footer {
-    bottom: 0px;
-    box-shadow:
-        0px 2.5px 4.8px rgba(0, 0, 0, 0.415),
-        0px -20px 38px rgba(0, 0, 0, 0.83);
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 #footer ul,
@@ -106,10 +104,6 @@ div#destaques .swiper-wrapper .swiper-slide {
 
 #footer div.row hr {
     display: none;
-}
-
-@media screen and (max-width: 1280px) {
-    
 }
 
 @media screen and (max-width: 767px) {

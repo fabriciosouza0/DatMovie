@@ -7,12 +7,6 @@ use app\Model\HomeModel;
 
 class HomeController
 {
-    private $homeModel;
-
-    public function __construct()
-    {
-        $this->homeModel = new HomeModel();
-    }
 
     public function index()
     {
@@ -29,5 +23,4 @@ class HomeController
 
         echo $twig->render($template, $data);;
     }
-
 }

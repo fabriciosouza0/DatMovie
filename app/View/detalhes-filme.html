@@ -9,6 +9,13 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
+<div class="row" id="populares">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="https://embed.warezcdn.com/filme/{{imdbId}}"><img height="400px" src="{{poster}}" alt="" /></a>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block footer %}
