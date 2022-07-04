@@ -63,11 +63,11 @@ class TMDB_api
         }
         shuffle($data['results']);
         $destaques = array();
-        
+
         for ($i = 0; $i < $qtd; $i++) {
             array_push($destaques, $data['results'][$i]);
         }
-        
+
 
         return $destaques;
     }
@@ -111,7 +111,59 @@ class TMDB_api
         );
 
         try {
-            $data = $this->request('movie/'.$id, $params);
+            $data = $this->request('movie/' . $id, $params);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function FilmesRelacionados($filmeId)
+    {
+        $params = array(
+            'language' => 'pt-BR',
+            'page' => 1
+        );
+
+        try {
+            $data = $this->request('movie/' . $filmeId . '/similar', $params);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function detalhesDaSerie($id)
+    {
+        $params = array(
+            'language' => 'pt-BR'
+        );
+
+        try {
+            $data = $this->request('tv/' . $id, $params);
+            $imdb_id = $this->request('tv/' . $id . '/external_ids', $params);
+            array_unshift($data, $imdb_id['imdb_id']);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function SeriesRelacionadas($serieId)
+    {
+        $params = array(
+            'language' => 'pt-BR',
+            'page' => 1
+        );
+
+        try {
+            $data = $this->request('tv/' . $serieId . '/similar', $params);
         } catch (Exception $e) {
             $this->erro = true;
             return $e->getMessage();

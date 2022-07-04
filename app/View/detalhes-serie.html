@@ -17,7 +17,7 @@
     <style>
         #backdrop::before {
             content: "";
-            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url({{backdrop}}); 
+            background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)), url({{backdrop}}); 
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="d-flex justify-content-center">
-                    <a href="https://embed.warezcdn.com/filme/{{imdbId}}">
+                    <a href="https://embed.warezcdn.com/serie/{{imdbId}}">
                         <img class="img-thumbnail" src="{{poster}}" alt="" />
                     </a>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col-md-8">
                 <div class="d-flex" style="flex-direction: column;">
                     <div id="title">
-                        <h5 style="font-weight: bold;">{{title}} <span style="font-size: 1rem;">({{ano}})</span>
+                        <h5 style="font-weight: bold;">{{title}} <span style="font-size: 1rem;">({{data-estreia}}) - ({{data-fim}})</span>
                             <br /><small class="text-muted">{{tagline}}</small>
                         </h5>
                     </div>
@@ -75,10 +75,10 @@
         <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
         <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
             <div class="swiper-wrapper">
-                {% for filme in relacionados.results %}
+                {% for serie in relacionados.results %}
                 {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
-                {% if filme.poster_path != null %}
-                {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
+                {% if serie.poster_path != null %}
+                {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
                 {% endif %}
                 <div class="swiper-slide">
                     <div class="container">
@@ -89,13 +89,13 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <h6 style="text-align: center;" class="section-title font-weight-bold">{{filme.title}}
+                                <h6 style="text-align: center;" class="section-title font-weight-bold">{{serie.name}}
                                 </h6>
                             </div>
                         </div>
                     </div>
 
-                    <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
+                    <a href="http://localhost/aniplus/serie/detalhes/{{serie.id}}">
                         <div class="preview-body">
                         </div>
                     </a>
@@ -114,5 +114,5 @@
 
 {% block additionalScripts %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="http://localhost/aniplus/app/lib/Js/filme.js"></script>
+<script src="http://localhost/aniplus/app/lib/Js/serie.js"></script>
 {% endblock %}

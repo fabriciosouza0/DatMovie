@@ -59,7 +59,6 @@
                 {% if filme.poster_path != null %}
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
                 {% endif %}
-                <a href="filme/detalhes/{{filme.id}}"></a>
                 <div class="swiper-slide">
                     <div class="container">
                         <div class="row">
@@ -99,7 +98,6 @@
                 {% if serie.poster_path != null %}
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
                 {% endif %}
-                <a href="serie/detalhes/{{serie.id}}"></a>
                 <div class="swiper-slide">
                     <div class="container">
                         <div class="row">
@@ -114,7 +112,7 @@
                         </div>
                     </div>
 
-                    <a href="filme/detalhes/{{filme.id}}">
+                    <a href="serie/detalhes/{{serie.id}}">
                         <div class="preview-body">
                         </div>
                     </a>

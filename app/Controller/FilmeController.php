@@ -31,9 +31,13 @@ class FilmeController
         $params = array(
             'title' => $filme['title'],
             'poster' => 'https://image.tmdb.org/t/p/original' . $filme['poster_path'],
-            'imdbId' => $filme['imdb_id']
+            'backdrop' => 'https://image.tmdb.org/t/p/original' . $filme['backdrop_path'],
+            'imdbId' => $filme['imdb_id'],
+            'tagline' => $filme['tagline'],
+            'desc' => $filme['overview'],
+            'ano' => substr($filme['release_date'], 0, 4),
+            'relacionados' => FilmeModel::FilmesRelacionados($filmeId)
         );
-
 
         echo $twig->render($template, $params);
     }

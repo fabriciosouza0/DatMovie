@@ -4,18 +4,18 @@ namespace app\Model;
 
 use app\api\modules\TMDB_api;
 
-class FilmeModel
+class SerieModel
 {
     private static $tmdbApi;
 
-    public static function detalhes($filmeId)
+    public static function detalhesDaSerie($serieId)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
-        return self::$tmdbApi->detalhesDoFilme($filmeId);
+        return self::$tmdbApi->detalhesDaSerie($serieId);
     }
 
-    public static function FilmesRelacionados($filmeId) {
+    public static function SeriesRelacionadas($serieId) {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
-        return self::$tmdbApi->FilmesRelacionados($filmeId);
+        return self::$tmdbApi->SeriesRelacionadas($serieId);
     }
 }
