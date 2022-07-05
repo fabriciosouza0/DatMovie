@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('#home').addClass('active');
+});
+
 const destaques = new Swiper("#destaques", {
     cssMode: true,
     navigation: {

@@ -27,6 +27,7 @@ class FilmeController
         $template = $twig->load('detalhes-filme.html');
 
         $filme = FilmeModel::detalhes($filmeId);
+        $overview = strlen($filme['overview']) > 230 ? substr($filme['overview'], 0, 230) . '...' : $filme['overview'];
 
         $params = array(
             'title' => $filme['title'],
@@ -34,7 +35,8 @@ class FilmeController
             'backdrop' => 'https://image.tmdb.org/t/p/original' . $filme['backdrop_path'],
             'imdbId' => $filme['imdb_id'],
             'tagline' => $filme['tagline'],
-            'desc' => $filme['overview'],
+            'desc' => $overview,
+            'time' => $filme['runtime'],
             'ano' => substr($filme['release_date'], 0, 4),
             'relacionados' => FilmeModel::FilmesRelacionados($filmeId)
         );

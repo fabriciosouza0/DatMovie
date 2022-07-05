@@ -4,20 +4,16 @@
 
 {% block css %}
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-<style>
-    #menu {
-        position: relative !important;
-    }
-</style>
 {% endblock %}
 
 {% block title %}{{title}}{% endblock %}
 {% block slide %}
-<div class="container-fluid" id="backdrop" style="padding: 2rem 0;">
+<div class="container-fluid" id="backdrop" style="padding: 2rem 0; margin-top: 76px;">
     <style>
         #backdrop::before {
             content: "";
-            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url({{backdrop}}); 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)),
+            url({{backdrop}});
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
@@ -33,9 +29,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center" id="poster">
                     <a href="https://embed.warezcdn.com/filme/{{imdbId}}">
-                        <img class="img-thumbnail" src="{{poster}}" alt="" />
+                        <img class="img-thumbnail" src="{{poster}}" />
                     </a>
                 </div>
             </div>
@@ -46,19 +42,77 @@
                             <br /><small class="text-muted">{{tagline}}</small>
                         </h5>
                     </div>
+                    <div class="d-flex justify-content-center" id="poster-mb">
+                        <a href="https://embed.warezcdn.com/filme/{{imdbId}}">
+                            <img class="img-thumbnail" src="{{poster}}" />
+                        </a>
+                    </div>
                     <div id="desc">
                         <span style="font-size: 1.25rem; font-weight: bold;">Sinopse: </span>{{desc}}
                     </div>
-                    <div id="idade">
-
+                    <div id="time">
+                        <span style="font-size: 1.25rem; font-weight: bold;">Duração: </span>{{time}} min
+                    </div>
+                    <div id="options">
+                        <a class="btn btn-danger" href="https://embed.warezcdn.com/filme/{{imdbId}}"
+                            data-toggle="tooltip" data-placement="top" title="Reproduzir {{title}}"
+                            style="border-radius: 50%;">
+                            <i class="fa-solid fa-play"></i>
+                        </a>
+                        <button class="btn btn-danger" data-toggle="tooltip" data-placement="top"
+                            title="Compartilhar o titulo: {{title}}" style="border-radius: 50%;">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
                     </div>
                     <style>
                         #desc {
                             text-align: justify;
-                            left: 0px;
                             padding: 0.5rem 0rem;
                             font-size: 1rem;
                             font-weight: 600;
+                        }
+
+                        #options {
+                            padding: 1rem 0rem;
+                        }
+
+                        #options button,
+                        #options a {
+                            margin-right: 0.357rem;
+                        }
+
+                        #poster-mb {
+                            display: none !important;
+                        }
+
+                        @media screen and (max-width: 768px) {
+                            #backdrop::before {
+                                height: 623px;
+                            }
+
+                            #title {
+                                text-align: center !important;
+                            }
+
+                            #poster {
+                                display: none !important;
+                            }
+
+                            #poster-mb {
+                                display: flex !important;
+                            }
+
+                            #poster-mb img {
+                                height: 300px;
+                            }
+
+                            #time {
+                                text-align: center;
+                            }
+
+                            #options {
+                                text-align: center;
+                            }
                         }
                     </style>
                 </div>

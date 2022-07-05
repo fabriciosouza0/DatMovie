@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('#series').addClass('active');
+});
+
 const swiper = new Swiper(".swiper", {
     breakpoints: {
         375: {
