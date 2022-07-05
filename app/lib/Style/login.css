@@ -1,3 +1,7 @@
+html,body {
+    background-color: #23252b;
+}
+
 #form_login,
 #new_account {
     max-width: 350px;

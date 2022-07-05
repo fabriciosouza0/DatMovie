@@ -1,3 +1,7 @@
+html,body {
+    background-color: #23252b;
+}
+
 #form-cadastro,
 #login {
     max-width: 450px;
