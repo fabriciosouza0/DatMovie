@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.c-wrapper .c {
+    margin-bottom: 1rem;
+}
+
 .page-item.disabled .page-link {
     background-color: #000 !important;
 }

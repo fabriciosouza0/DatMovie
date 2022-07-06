@@ -145,24 +145,26 @@
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
                 {% endif %}
                 <div class="swiper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12" style="text-align: center; padding-top: 15px;">
-                                <img class="img-fluid" src="{{img_path}}" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <h6 style="text-align: center;" class="section-title font-weight-bold">{{filme.title}}
-                                </h6>
+                    <div class="c-wrapper">
+                        <div class="c">
+                            <div class="c-content">
+                                <div class="c-header">
+                                    <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
+                                        <img class="img-fluid"
+                                            src="https://image.tmdb.org/t/p/original{{filme.poster_path}}" />
+                                    </a>
+                                </div>
+                                <div class="c-body">
+                                    <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
+                                        <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{filme.title}}</p>
+                                    </a>
+                                </div>
+                                <div class="c-footer">
+                                    <i class="fa-solid fa-star star"></i> {{filme.vote_average}}
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
-                        <div class="preview-body">
-                        </div>
-                    </a>
                 </div>
                 {% endfor %}
             </div>
