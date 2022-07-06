@@ -1,5 +1,51 @@
 body {
-    height: 100% !important;
+    height: 100vh !important;
+}
+
+.c-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.c-wrapper a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.c-wrapper a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.c-wrapper .c {
+    width: 200px;
+}
+
+.c-wrapper .c .c-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.4rem;
+    background-color: rgba(255, 255, 255, 0);
+    transition: all .2s ease-in-out;
+}
+
+.c-wrapper .c .c-content:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.c-wrapper .c .c-header,
+.c-wrapper .c .c-body,
+.c-wrapper .c .c-footer {
+    margin-bottom: 1rem;
+    border: none;
+    z-index: 1;
+}
+
+.star {
+    color: #ff0909;
 }
 
 .redes ul {
@@ -49,6 +95,14 @@ div .div-logo-lg {
 .swiper-button-next,
 .swiper-button-prev {
     color: #fafafa !important;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0);
+    transition: all .2s ease-in-out;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(250, 250, 250, 0.3);
 }
 
 .swiper-pagination-bullet-active {
@@ -74,19 +128,6 @@ div.row div.swiper:last-child {
     font-size: 1.6rem !important;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-    padding: 15px;
-    background-image: transparent;
-    transition: all ease-in-out 5s;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background-image: linear-gradient(rgba(228, 228, 228, 0.7), rgba(255, 255, 255, 0.7));
-    
-}
-
 .preview-body {
     position: absolute;
     top: 0px;
@@ -98,14 +139,6 @@ div.row div.swiper:last-child {
     padding-right: 1rem;
 }
 
-.title-destaque h3 {
-    font-weight: bolder;
-}
-
-.title-destaque p {
-    text-indent: 1.5rem;
-}
-
 .preview-body .preview-header,
 .preview-body .preview-content {
     visibility: hidden;
@@ -113,16 +146,16 @@ div.row div.swiper:last-child {
 
 div.preview-body {
     display: flex;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
-    transition: background-image 2s;
+    transition: all 5s ease-in-out;
 }
 
 div.preview-body:hover {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 div.preview-body:hover .preview-content {
@@ -160,8 +193,8 @@ div#destaques .swiper-wrapper .swiper-slide {
 }
 
 #content {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: calc(76px + 1rem);
+    margin-bottom: 2rem;
 }
 
 #footer {

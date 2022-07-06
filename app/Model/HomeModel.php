@@ -25,4 +25,9 @@ abstract class HomeModel
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
         return self::$tmdbApi->seriesPopulares($page);
     }
+
+    public static function generos($target = 'movie') {
+        if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
+        return self::$tmdbApi->generos($target);
+    }
 }

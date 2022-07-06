@@ -1,0 +1,21 @@
+#page {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.page-item.disabled .page-link {
+    background-color: #000 !important;
+}
+
+.page-link {
+    background-color: #000 !important;
+    border: none !important;
+}
+
+.page-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s linear;
+}

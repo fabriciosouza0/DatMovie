@@ -4,6 +4,11 @@
 
 {% block css %}
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<style>
+    #content {
+        margin-top: 1.7rem;
+    }
+</style>
 {% endblock %}
 
 {% block title %}{{title}}{% endblock %}
@@ -27,8 +32,8 @@
         }
     </style>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row" id="mb-flex">
+            <div class="col-md-4" id="poster_container">
                 <div class="d-flex justify-content-center" id="poster">
                     <a href="https://embed.warezcdn.com/filme/{{imdbId}}">
                         <img class="img-thumbnail" src="{{poster}}" />
@@ -94,8 +99,13 @@
                                 text-align: center !important;
                             }
 
-                            #poster {
+                            #poster,
+                            #poster_container {
                                 display: none !important;
+                            }
+
+                            #mb-flex {
+                                justify-content: center;
                             }
 
                             #poster-mb {

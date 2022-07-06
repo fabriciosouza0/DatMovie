@@ -2,24 +2,10 @@
 
 namespace app\Controller;
 
-use app\lib\config\Config;
 use app\Model\SerieModel;
 
 class SerieController
 {
-    public function assistir($serieId)
-    {
-        $loader = new \Twig\Loader\FilesystemLoader('app/View');
-        $twig = new \Twig\Environment($loader);
-        $template = $twig->load('assistir-serie.html');
-
-        $params = array(
-            'title' => Config::getPrefix() . 'Página Inexistente'
-        );
-
-        echo $twig->render($template, $params);
-    }
-
     public function detalhes($serieId)
     {
         $loader = new \Twig\Loader\FilesystemLoader('app/View');

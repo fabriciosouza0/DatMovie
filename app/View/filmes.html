@@ -1,0 +1,85 @@
+{% extends 'Template/structure.html' %}
+
+{% block theme %}{{theme}}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="http://localhost/aniplus/app/lib/Style/discover.css">
+{% endblock %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <form action="" style="right: 0.4rem;">
+            <div class="form-group">
+                <label for="orderBy">Ordenar por:</label>
+                <select class="form-control" id="orderBy" style="width: auto;">
+                    <option value="">Popularidade</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="d-flex col-md-4 ml-auto justify-content-end">
+        <form action="" style="left: 0.4rem;">
+            <div class="form-group">
+                <label for="genero">Gênero:</label>
+                <select class="form-control" id="genero" style="width: auto;">
+                    {% for data in generos %}
+                        {% for generos in data %}
+                            <option value="{{generos.id}}">{{generos.name}}</option>
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="c-wrapper">
+            {% for filme in filmes.results %}
+            <div class="c">
+                <div class="c-content">
+                    <div class="c-header">
+                        <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
+                            <img class="img-fluid" src="https://image.tmdb.org/t/p/original{{filme.poster_path}}" />
+                        </a>
+                    </div>
+                    <div class="c-body">
+                        <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
+                            <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{filme.title}}</p>
+                        </a>
+                    </div>
+                    <div class="c-footer">
+                        <i class="fa-solid fa-star star"></i> {{filme.vote_average}}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <section id="page">
+                <nav aria-label="Navegação de página exemplo">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Próximo</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block additionalScripts %}
+<script src="http://localhost/aniplus/app/lib/Js/filme.js"></script>
+{% endblock %}

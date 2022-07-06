@@ -171,4 +171,20 @@ class TMDB_api
 
         return $data;
     }
+
+    public function generos($target = 'movie')
+    {
+        $params = array(
+            'language' => 'pt-BR'
+        );
+
+        try {
+            $data = $this->request('genre/' . $target . '/list', $params);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
 }
