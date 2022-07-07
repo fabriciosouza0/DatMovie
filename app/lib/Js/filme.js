@@ -2,7 +2,12 @@ $(document).ready(function() {
     $('#filmes').addClass('active');
 });
 
-const swiper = new Swiper(".swiper", {
+const swiper = new Swiper("#relacionados .swiper", {
+    cssMode: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
     breakpoints: {
         375: {
             slidesPerView: 2,
@@ -28,11 +33,6 @@ const swiper = new Swiper(".swiper", {
             slidesPerView: 6,
             spaceBetween: 10
         }
-    },
-    cssMode: true,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
     },
     mousewheel: true,
     keyboard: true,

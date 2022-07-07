@@ -3,36 +3,17 @@
 {% block theme %}{{theme}}{% endblock %}
 
 {% block css %}
+<link rel="stylesheet" href="http://localhost/aniplus/app/lib/Style/detalhes.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-<style>
-    #menu {
-        position: relative !important;
-    }
-</style>
 {% endblock %}
 
 {% block title %}{{title}}{% endblock %}
 {% block slide %}
-<div class="container-fluid" id="backdrop" style="padding: 2rem 0;">
-    <style>
-        #backdrop::before {
-            content: "";
-            background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)), url({{backdrop}}); 
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-            position: absolute;
-            top: 76px;
-            left: 0px;
-            height: 584px;
-            width: 100%;
-            -webkit-filter: blur(5px);
-            filter: blur(5px);
-        }
-    </style>
+<div class="container-fluid" id="backdrop"
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url({{backdrop}});">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row" id="mb-flex">
+            <div class="col-md-4" id="poster_container">
                 <div class="d-flex justify-content-center" id="poster">
                     <a href="https://embed.warezcdn.com/serie/{{imdbId}}">
                         <img class="img-thumbnail" src="{{poster}}" />
@@ -42,7 +23,8 @@
             <div class="col-md-8">
                 <div class="d-flex" style="flex-direction: column;">
                     <div id="title">
-                        <h5 style="font-weight: bold;">{{title}} <span style="font-size: 1rem;">({{data-estreia}}) - ({{data-fim}})</span>
+                        <h5 style="font-weight: bold;">{{title}} <span style="font-size: 1rem;">({{data-estreia}}) -
+                                ({{data-fim}})</span>
                             <br /><small class="text-muted">{{tagline}}</small>
                         </h5>
                     </div>
@@ -69,55 +51,7 @@
                         </button>
                     </div>
                     <style>
-                        #desc {
-                            text-align: justify;
-                            padding: 0.5rem 0rem;
-                            font-size: 1rem;
-                            font-weight: 600;
-                        }
 
-                        #options {
-                            padding: 1rem 0rem;
-                        }
-
-                        #options button,
-                        #options a {
-                            margin-right: 0.357rem;
-                        }
-
-                        #poster-mb {
-                            display: none !important;
-                        }
-
-                        @media screen and (max-width: 768px) {
-                            #backdrop::before {
-                                height: 623px;
-                            }
-
-                            #title {
-                                text-align: center !important;
-                            }
-
-                            #poster {
-                                display: none !important;
-                            }
-
-                            #poster-mb {
-                                display: flex !important;
-                            }
-
-                            #poster-mb img {
-                                height: 300px;
-                            }
-
-                            #time {
-                                text-align: center;
-                            }
-
-                            #options {
-                                text-align: center;
-                            }
-                        }
                     </style>
                 </div>
             </div>
@@ -139,24 +73,26 @@
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
                 {% endif %}
                 <div class="swiper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12" style="text-align: center; padding-top: 15px;">
-                                <img class="img-fluid" src="{{img_path}}" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <h6 style="text-align: center;" class="section-title font-weight-bold">{{serie.name}}
-                                </h6>
+                    <div class="c-wrapper">
+                        <div class="c">
+                            <div class="c-content">
+                                <div class="c-header">
+                                    <a href="http://localhost/aniplus/filme/detalhes/{{serie.id}}">
+                                        <img class="img-fluid"
+                                            src="https://image.tmdb.org/t/p/original{{serie.poster_path}}" />
+                                    </a>
+                                </div>
+                                <div class="c-body">
+                                    <a href="http://localhost/aniplus/filme/detalhes/{{serie.id}}">
+                                        <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{serie.name}}</p>
+                                    </a>
+                                </div>
+                                <div class="c-footer">
+                                    <i class="fa-solid fa-star star"></i> {{serie.vote_average}}
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <a href="http://localhost/aniplus/serie/detalhes/{{serie.id}}">
-                        <div class="preview-body">
-                        </div>
-                    </a>
                 </div>
                 {% endfor %}
             </div>

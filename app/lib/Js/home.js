@@ -18,12 +18,10 @@ const destaques = new Swiper("#destaques", {
     on: {
         init: function (i) {
             var background = $(i.slides[i.activeIndex]).data('background');
-            console.log(background);
             $('#slide_container').css('backgroundImage', 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original' + background);
         },
         slideChange: function (i) {
             var background = $(i.slides[i.activeIndex]).data('background');
-            console.log(background);
             $('#slide_container').css('backgroundImage', 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original' + background);
         },
     },

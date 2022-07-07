@@ -1,0 +1,62 @@
+#backdrop {
+    margin-top: 76px;
+    padding: 2rem 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#desc {
+    text-align: justify;
+    padding: 0.5rem 0rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#options {
+    padding: 1rem 0rem;
+}
+
+#options button,
+#options a {
+    margin-right: 0.357rem;
+}
+
+#poster-mb {
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+    #backdrop::before {
+        height: 623px;
+    }
+
+    #title {
+        text-align: center !important;
+    }
+
+    #poster,
+    #poster_container {
+        display: none !important;
+    }
+
+    #mb-flex {
+        justify-content: center;
+    }
+
+    #poster-mb {
+        display: flex !important;
+    }
+
+    #poster-mb img {
+        height: 300px;
+    }
+
+    #time {
+        text-align: center;
+    }
+
+    #options {
+        text-align: center;
+    }
+}
