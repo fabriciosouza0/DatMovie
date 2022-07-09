@@ -10,7 +10,7 @@ class TMDB_api
     private $key;
     private $error;
 
-    public function __construct($key = null, $params = array())
+    public function __construct($key = null)
     {
         $this->key = TMDB_config::getTmdbApiKey();
 
@@ -180,6 +180,27 @@ class TMDB_api
 
         try {
             $data = $this->request('genre/' . $target . '/list', $params);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function discover($target = 'movie', $sort_by = 'popularity.desc', $with_genres = null, $include_adult = true, $include_video = false, $page = 1)
+    {
+        $params = array(
+            'language' => 'pt-BR',
+            'sort_by' => $sort_by,
+            'with_genres' => $with_genres,
+            'include_adult' => $include_adult,
+            'include_video' => $include_video,
+            'page' => $page
+        );
+
+        try {
+            $data = $this->request('discover/' . $target, $params);
         } catch (Exception $e) {
             $this->erro = true;
             return $e->getMessage();

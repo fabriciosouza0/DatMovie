@@ -10,28 +10,26 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-4">
-        <form action="" style="right: 0.4rem;">
-            <div class="form-group">
-                <label for="orderBy">Ordenar por:</label>
-                <select class="form-control" id="orderBy" style="width: auto;">
-                    <option value="">Popularidade</option>
+    <div class="col-md-12">
+        <button class="btn-options"><i class="fa-solid fa-filter"></i> Filtrar</button>
+        <form class="form-options d-none" action="">
+            <div>
+                <label for="order">Ordem:</label>
+                <select name="order" id="order">
+                    <option value="popularidade">Popularidade</option>
                 </select>
             </div>
-        </form>
-    </div>
-    <div class="d-flex col-md-4 ml-auto justify-content-end">
-        <form action="" style="left: 0.4rem;">
-            <div class="form-group">
+            <div>
                 <label for="genero">Gênero:</label>
-                <select class="form-control" id="genero" style="width: auto;">
+                <select name="genero" id="genero">
                     {% for data in generos %}
-                        {% for generos in data %}
-                            <option value="{{generos.id}}">{{generos.name}}</option>
-                        {% endfor %}
+                    {% for genero in data %}
+                    <option value="{{genero.id}}">{{genero.name}}</option>
+                    {% endfor %}
                     {% endfor %}
                 </select>
             </div>
+            <button type="submit">aplicar</button>
         </form>
     </div>
 </div>
@@ -39,11 +37,15 @@
     <div class="col-md-12">
         <div class="c-wrapper">
             {% for serie in series.results %}
+            {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+            {% if serie.poster_path != null %}
+            {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
+            {% endif %}
             <div class="c">
                 <div class="c-content">
                     <div class="c-header">
                         <a href="http://localhost/aniplus/serie/detalhes/{{serie.id}}">
-                            <img class="img-fluid" src="https://image.tmdb.org/t/p/original{{serie.poster_path}}" />
+                            <img class="img-fluid" src="{{img_path}}" />
                         </a>
                     </div>
                     <div class="c-body">
@@ -81,5 +83,5 @@
 {% endblock %}
 
 {% block additionalScripts %}
-<script src="http://localhost/aniplus/app/lib/Js/serie.js"></script>
+<script src="http://localhost/aniplus/app/lib/Js/discover.js"></script>
 {% endblock %}

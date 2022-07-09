@@ -19,7 +19,6 @@
                     <option value="popularidade">Popularidade</option>
                 </select>
             </div>
-
             <div>
                 <label for="genero">Gênero:</label>
                 <select name="genero" id="genero">
@@ -30,7 +29,6 @@
                     {% endfor %}
                 </select>
             </div>
-
             <button type="submit">aplicar</button>
         </form>
     </div>
@@ -39,11 +37,15 @@
     <div class="col-md-12">
         <div class="c-wrapper">
             {% for filme in filmes.results %}
+            {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+            {% if filme.poster_path != null %}
+            {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
+            {% endif %}
             <div class="c">
                 <div class="c-content">
                     <div class="c-header">
                         <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
-                            <img class="img-fluid" src="https://image.tmdb.org/t/p/original{{filme.poster_path}}" />
+                            <img class="img-fluid" src="{{img_path}}" />
                         </a>
                     </div>
                     <div class="c-body">
@@ -81,10 +83,5 @@
 {% endblock %}
 
 {% block additionalScripts %}
-<script src="http://localhost/aniplus/app/lib/Js/filme.js"></script>
-<script>
-    $('.btn-options').click(function () {
-        $('.form-options').toggleClass('d-none');
-    });
-</script>
+<script src="http://localhost/aniplus/app/lib/Js/discover.js"></script>
 {% endblock %}
