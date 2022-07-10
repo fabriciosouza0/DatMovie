@@ -2,7 +2,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-<link rel="stylesheet" href="http://localhost/aniplus/app/lib/Style/home.css">
+<link rel="stylesheet" href="app/lib/Style/home.css">
 {% endblock %}
 
 {% block title %}
@@ -14,7 +14,7 @@
     <div class="container swiper" id="destaques">
         <div class="swiper-wrapper">
             {% for destaque in destaques %}
-            {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+            {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
             {% if destaque.poster_path != null %}
             {% set img_path = 'https://image.tmdb.org/t/p/original' ~ destaque.poster_path %}
             {% endif %}
@@ -55,7 +55,7 @@
         <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
             <div class="swiper-wrapper">
                 {% for filme in filmes_populares.results %}
-                {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+                {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
                 {% if filme.poster_path != null %}
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
                 {% endif %}
@@ -63,13 +63,13 @@
                     <div class="c">
                         <div class="c-content">
                             <div class="c-header">
-                                <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
+                                <a href="filme/detalhes/{{filme.id}}">
                                     <img class="img-fluid"
                                         src="https://image.tmdb.org/t/p/original{{filme.poster_path}}" />
                                 </a>
                             </div>
                             <div class="c-body">
-                                <a href="http://localhost/aniplus/filme/detalhes/{{filme.id}}">
+                                <a href="filme/detalhes/{{filme.id}}">
                                     <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{filme.title}}</p>
                                 </a>
                             </div>
@@ -94,7 +94,7 @@
         <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
             <div class="swiper-wrapper">
                 {% for serie in series_populares.results %}
-                {% set img_path = 'http://localhost/aniplus/app/lib/Style/Images/img-not-found.png' %}
+                {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
                 {% if serie.poster_path != null %}
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
                 {% endif %}
@@ -102,13 +102,13 @@
                     <div class="c">
                         <div class="c-content">
                             <div class="c-header">
-                                <a href="http://localhost/aniplus/serie/detalhes/{{serie.id}}">
+                                <a href="serie/detalhes/{{serie.id}}">
                                     <img class="img-fluid"
                                         src="https://image.tmdb.org/t/p/original{{serie.poster_path}}" />
                                 </a>
                             </div>
                             <div class="c-body">
-                                <a href="http://localhost/aniplus/serie/detalhes/{{serie.id}}">
+                                <a href="serie/detalhes/{{serie.id}}">
                                     <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{serie.name}}</p>
                                 </a>
                             </div>
@@ -133,7 +133,7 @@
 
 {% block additionalScripts %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="http://localhost/aniplus/app/lib/Js/home.js"></script>
+<script src="app/lib/Js/home.js"></script>
 <script>
 </script>
 {% endblock %}
