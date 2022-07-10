@@ -2,7 +2,7 @@
 
 namespace app\Controller;
 
-use app\lib\config\Config;
+use app\lib\Config\Config;
 use app\Model\DiscoverModel;
 
 class DiscoverController extends ErroController
