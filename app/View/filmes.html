@@ -25,13 +25,13 @@
                 <select name="genero" id="genero">
                     <option value=""></option>
                     {% for data in generos %}
-                        {% for genero in data %}
-                            {% if genero.id == genre %}
-                                <option value="{{genero.id}}" selected>{{genero.name}}</option>
-                            {% else %}
-                                <option value="{{genero.id}}">{{genero.name}}</option>
-                            {% endif %}
-                        {% endfor %}
+                    {% for genero in data %}
+                    {% if genero.id == genre %}
+                    <option value="{{genero.id}}" selected>{{genero.name}}</option>
+                    {% else %}
+                    <option value="{{genero.id}}">{{genero.name}}</option>
+                    {% endif %}
+                    {% endfor %}
                     {% endfor %}
                 </select>
             </div>
@@ -70,38 +70,45 @@
             <nav aria-label="Navegação de página exemplo">
                 <ul class="pagination justify-content-center">
                     {% if pagination.before < 1 %}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}"
-                                tabindex="-1">Anterior</a>
-                        </li>
+                    <li class="page-item disabled">
+                        <a class="page-link"
+                            href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}"
+                            tabindex="-1">Anterior</a>
+                    </li>
                     {% else %}
-                        <li class="page-item">
-                            <a class="page-link"
-                                href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}"
-                                tabindex="-1">Anterior</a>
-                        </li>
+                    <li class="page-item">
+                        <a class="page-link"
+                            href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}"
+                            tabindex="-1">Anterior</a>
+                    </li>
                     {% endif %}
 
                     {% for item in pagination.itens %}
-                        {% if page == item %}
-                            <li class="page-item active-bg">
-                                <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{item}}/{{order}}/{{genre}}">{{item}}</a>
-                            </li>
-                        {% else %}
-                            <li class="page-item">
-                                <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{item}}/{{order}}/{{genre}}">{{item}}</a>
-                            </li>
-                        {% endif %}
+                    {% if page == item %}
+                    <li class="page-item active-bg">
+                        <a class="page-link"
+                            href="http://localhost/aniplus/discover/filmes/{{item}}/{{order}}/{{genre}}">{{item}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link"
+                            href="http://localhost/aniplus/discover/filmes/{{item}}/{{order}}/{{genre}}">{{item}}</a>
+                    </li>
+                    {% endif %}
                     {% endfor %}
 
                     {% if pagination.next == filmes.total_pages %}
-                        <li class="page-item disabled"> 
-                            <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}" tabindex="-1">Anterior</a>
-                        </li>
+                    <li class="page-item disabled">
+                        <a class="page-link"
+                            href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}"
+                            tabindex="-1">Anterior</a>
+                    </li>
                     {% else %}
-                        <li class="page-item">
-                            <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{pagination.next}}/{{order}}/{{genre}}" tabindex="-1">Próximo</a>
-                        </li>
+                    <li class="page-item">
+                        <a class="page-link"
+                            href="http://localhost/aniplus/discover/filmes/{{pagination.next}}/{{order}}/{{genre}}"
+                            tabindex="-1">Próximo</a>
+                    </li>
                     {% endif %}
                 </ul>
             </nav>
