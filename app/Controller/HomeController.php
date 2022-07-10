@@ -7,7 +7,6 @@ use app\Model\HomeModel;
 
 class HomeController
 {
-
     public function index()
     {
         $loader = new \Twig\Loader\FilesystemLoader('app/View');

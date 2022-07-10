@@ -85,8 +85,8 @@
 
                     {% for item in pagination.itens %}
                     {% if page == item %}
-                    <li class="page-item active-bg">
-                        <a class="page-link"
+                    <li class="page-item disabled">
+                        <a class="page-link active-link"
                             href="http://localhost/aniplus/discover/filmes/{{item}}/{{order}}/{{genre}}">{{item}}</a>
                     </li>
                     {% else %}

@@ -14,8 +14,14 @@ class SerieModel
         return self::$tmdbApi->detalhesDaSerie($serieId);
     }
 
-    public static function SeriesRelacionadas($serieId) {
+    public static function SeriesRelacionadas($serieId)
+    {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
         return self::$tmdbApi->SeriesRelacionadas($serieId);
+    }
+
+    public static function getError()
+    {
+        return self::$tmdbApi->request_error();
     }
 }

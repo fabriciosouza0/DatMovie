@@ -5,7 +5,7 @@ namespace app\Controller;
 use app\lib\config\Config;
 use app\Model\DiscoverModel;
 
-class DiscoverController
+class DiscoverController extends ErroController
 {
     private $page;
     private $sort_by;

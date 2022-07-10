@@ -36,8 +36,15 @@ class TMDB_api
             }
 
             $uri = substr($uri, 0, -1);
-            $responde = @file_get_contents($uri);
-            return json_decode($responde, true);
+            $response = json_decode(@file_get_contents($uri), true);
+
+            if (!is_array($response)) {
+                $this->erro = true;
+            } elseif (sizeof($response) < 1) {
+                $this->erro = true;
+            }
+
+            return $response;
         } else {
             $this->erro = true;
             throw new Exception('segundo parâmetro deve ser um array!');
@@ -67,7 +74,6 @@ class TMDB_api
         for ($i = 0; $i < $qtd; $i++) {
             array_push($destaques, $data['results'][$i]);
         }
-
 
         return $destaques;
     }
@@ -127,11 +133,12 @@ class TMDB_api
             'page' => 1
         );
 
-        try {
-            $data = $this->request('movie/' . $filmeId . '/similar', $params);
-        } catch (Exception $e) {
-            $this->erro = true;
-            return $e->getMessage();
+        $data = $this->request('movie/' . $filmeId . '/similar', $params);
+
+        if (!is_array($data)) {
+            $this->error = true;
+        } elseif (sizeof($data) < 1) {
+            $this->error = true;
         }
 
         return $data;
@@ -143,13 +150,15 @@ class TMDB_api
             'language' => 'pt-BR'
         );
 
-        try {
-            $data = $this->request('tv/' . $id, $params);
+        $data = $this->request('tv/' . $id, $params);
+
+        if (!is_array($data)) {
+            $this->error = true;
+        } elseif (sizeof($data) < 1) {
+            $this->error = true;
+        } else {
             $imdb_id = $this->request('tv/' . $id . '/external_ids', $params);
             array_unshift($data, $imdb_id['imdb_id']);
-        } catch (Exception $e) {
-            $this->erro = true;
-            return $e->getMessage();
         }
 
         return $data;

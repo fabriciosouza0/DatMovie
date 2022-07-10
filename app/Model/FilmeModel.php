@@ -18,4 +18,9 @@ class FilmeModel
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
         return self::$tmdbApi->FilmesRelacionados($filmeId);
     }
+
+    public static function getError()
+    {
+        return self::$tmdbApi->request_error();
+    }
 }
