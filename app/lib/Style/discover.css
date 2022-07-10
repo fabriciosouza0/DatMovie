@@ -1,3 +1,7 @@
+.active-bg a {
+    color: #ff7a7a;
+}
+
 .btn-options {
     border: none;
     color: #fff;
@@ -38,12 +42,21 @@
 
 .page-link {
     background-color: #000 !important;
+    color: #fff;
     border: none !important;
+    transition: background-color 0.2s linear;
 }
 
+
 .page-link:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: #000 !important;
+    color: #ff4a4a;
+    border: none !important;
     transition: background-color 0.2s linear;
+}
+
+.page-item:hover .page-link {
+    background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 #content {

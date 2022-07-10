@@ -12,20 +12,26 @@
 <div class="row">
     <div class="col-md-12">
         <button class="btn-options"><i class="fa-solid fa-filter"></i> Filtrar</button>
-        <form class="form-options d-none" action="">
+        <form class="form-options d-none" action="" method="post">
             <div>
                 <label for="order">Ordem:</label>
                 <select name="order" id="order">
-                    <option value="popularidade">Popularidade</option>
+                    <option value="pupularity.desc">Popularidade Desc</option>
+                    <option value="pupularity.asc">Popularidade Asc</option>
                 </select>
             </div>
             <div>
                 <label for="genero">Gênero:</label>
                 <select name="genero" id="genero">
+                    <option value=""></option>
                     {% for data in generos %}
-                    {% for genero in data %}
-                    <option value="{{genero.id}}">{{genero.name}}</option>
-                    {% endfor %}
+                        {% for genero in data %}
+                            {% if genero.id == genre %}
+                                <option value="{{genero.id}}" selected>{{genero.name}}</option>
+                            {% else %}
+                                <option value="{{genero.id}}">{{genero.name}}</option>
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
                 </select>
             </div>
@@ -59,22 +65,47 @@
                 </div>
             </div>
             {% endfor %}
-            <section id="page">
-                <nav aria-label="Navegação de página exemplo">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Próximo</a>
-                        </li>
-                    </ul>
-                </nav>
-            </section>
         </div>
+        <section id="page">
+            <nav aria-label="Navegação de página exemplo">
+                <ul class="pagination justify-content-center">
+                    {% if pagination.before < 1 %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}"
+                                tabindex="-1">Anterior</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link"
+                                href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}"
+                                tabindex="-1">Anterior</a>
+                        </li>
+                    {% endif %}
+
+                    {% for item in pagination.itens %}
+                        {% if page == item %}
+                            <li class="page-item active-bg">
+                                <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{item}}/{{order}}/{{genre}}">{{item}}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{item}}/{{order}}/{{genre}}">{{item}}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if pagination.next == filmes.total_pages %}
+                        <li class="page-item disabled"> 
+                            <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{pagination.before}}/{{order}}/{{genre}}" tabindex="-1">Anterior</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="http://localhost/aniplus/discover/filmes/{{pagination.next}}/{{order}}/{{genre}}" tabindex="-1">Próximo</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </section>
     </div>
 </div>
 {% endblock %}

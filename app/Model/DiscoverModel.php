@@ -8,10 +8,10 @@ class DiscoverModel
 {
     private static $tmdbApi;
 
-    public static function discover($target, $sort_by, $with_genres, $include_adult = true, $include_video = false, $page = 1)
+    public static function discover($target, $page = 1, $sort_by, $with_genres, $include_adult = true, $include_video = false)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
-        return self::$tmdbApi->discover($target, $sort_by, $with_genres);
+        return self::$tmdbApi->discover($target, $page, $sort_by, $with_genres);
     }
 
     public static function generos($target = 'movie')
