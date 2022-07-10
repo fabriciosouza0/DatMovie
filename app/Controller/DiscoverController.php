@@ -61,7 +61,7 @@ class DiscoverController extends ErroController
         echo $twig->render($template, $params);
     }
 
-    public function animes($page = 1, $sort_by = null, $genre = null)
+    public function animes($page = 1, $sort_by = 'popularity.desc', $genre = null)
     {
         $this->page = $page;
         $this->sort_by = $sort_by;
@@ -74,9 +74,9 @@ class DiscoverController extends ErroController
         $this->getPost();
 
         $params = array(
-            'series' => DiscoverModel::discover('tv', $this->page, $this->sort_by, $this->genre),
+            'series' => DiscoverModel::discover('tv', $this->page, $this->sort_by, '16,' . $this->genre),
             'page' => $this->page,
-            'title' => Config::getPrefix() . 'Séries',
+            'title' => Config::getPrefix() . 'Animes',
             'generos' => DiscoverModel::generos('tv'),
             'genre' => $this->genre,
             'pagination' => $this->pagination($this->page, 3)
@@ -98,19 +98,27 @@ class DiscoverController extends ErroController
         }
     }
 
-    private function pagination($page, $break)
+    private function pagination($page, $total_pages)
     {
+        $this->page = $page;
+
         if ($page < 0) $page = 1;
 
         $pagination = array(
             'before' => ($page - 1),
-            'next' => ($page + 1),
-            'itens' => array(),
-            'break' => $break
+            'itens'  => array(),
+            'next'   => ($page + 1)
         );
 
-        for ($i = $page; $i < $page + $break; $i++) {
-            $values[] = $i;
+        $break = $total_pages;
+        $values = array();
+
+        if ($total_pages > 3) {
+            $break = 3;
+        }
+
+        for ($i = $page; $i < ($page + $break); $i++) {
+            $values[] .= $i;
         }
         $pagination['itens'] = $values;
 

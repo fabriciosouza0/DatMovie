@@ -217,4 +217,23 @@ class TMDB_api
 
         return $data;
     }
+
+    public function search($search, $page = 1, $include_adult = true)
+    {
+        $params = array(
+            'language' => 'pt-BR',
+            'query' => urlencode($search),
+            'page' => $page,
+            'include_adult' => $include_adult
+        );
+
+        try {
+            $data = $this->request('search/multi', $params);
+        } catch (Exception $e) {
+            $this->erro = true;
+            return $e->getMessage();
+        }
+
+        return $data;
+    }
 }
