@@ -8,7 +8,7 @@ class DiscoverModel
 {
     private static $tmdbApi;
 
-    public static function discover($target, $page = 1, $sort_by, $with_genres, $include_adult = true, $include_video = false)
+    public static function discover($target, $page = 1, $sort_by, $with_genres)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
         return self::$tmdbApi->discover($target, $page, $sort_by, $with_genres);

@@ -197,7 +197,7 @@ class TMDB_api
         return $data;
     }
 
-    public function discover($target = 'movie', $page = 1, $sort_by = 'popularity.desc', $with_genres = null, $include_adult = true, $include_video = false)
+    public function discover($target = 'movie', $page = 1, $sort_by = 'popularity.desc', $with_genres = null, $include_adult = false, $include_video = false)
     {
         $params = array(
             'language' => 'pt-BR',
