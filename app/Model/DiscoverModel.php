@@ -8,10 +8,22 @@ class DiscoverModel
 {
     private static $tmdbApi;
 
-    public static function discover($target, $page = 1, $sort_by, $with_genres)
+    public static function discover($target = 'movie', $page = 1, $sort_by = 'popularity.desc', $with_genres = null, $include_adult = false, $include_video = false)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
-        return self::$tmdbApi->discover($target, $page, $sort_by, $with_genres);
+
+        $params = array(
+            'language' => 'pt-BR',
+            'sort_by' => $sort_by,
+            'with_genres' => $with_genres,
+            'include_adult' => $include_adult,
+            'include_video' => $include_video,
+            'page' => $page
+        );
+
+        $data = self::$tmdbApi->request('discover/' . $target, $params);
+
+        return $data;
     }
 
     public static function generos($target = 'movie')

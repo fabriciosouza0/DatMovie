@@ -20,8 +20,10 @@ class SearchController extends ErroController
 
         $this->getPost();
         $data = SearchModel::search($this->search, $this->page);
+        $find = sizeof($data['results']) == 0 ? false : true;
 
         $params = array(
+            'find' => $find,
             'all' => SearchModel::search($this->search, $this->page),
             'page' => $this->page,
             'title' => 'Pesquisar por: ' . $this->search,

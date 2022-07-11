@@ -8,9 +8,19 @@ class SearchModel
 {
     private static $tmdbApi;
 
-    public static function search($search, $page = 1)
+    public static function search($search, $page = 1, $include_adult = true)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
-        return self::$tmdbApi->search($search, $page);
+
+        $params = array(
+            'language' => 'pt-BR',
+            'query' => urlencode($search),
+            'page' => $page,
+            'include_adult' => $include_adult
+        );
+
+        $data = self::$tmdbApi->request('search/multi', $params);
+
+        return $data;
     }
 }

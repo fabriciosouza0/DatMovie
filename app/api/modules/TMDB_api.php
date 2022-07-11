@@ -196,44 +196,4 @@ class TMDB_api
 
         return $data;
     }
-
-    public function discover($target = 'movie', $page = 1, $sort_by = 'popularity.desc', $with_genres = null, $include_adult = false, $include_video = false)
-    {
-        $params = array(
-            'language' => 'pt-BR',
-            'sort_by' => $sort_by,
-            'with_genres' => $with_genres,
-            'include_adult' => $include_adult,
-            'include_video' => $include_video,
-            'page' => $page
-        );
-
-        try {
-            $data = $this->request('discover/' . $target, $params);
-        } catch (Exception $e) {
-            $this->erro = true;
-            return $e->getMessage();
-        }
-
-        return $data;
-    }
-
-    public function search($search, $page = 1, $include_adult = true)
-    {
-        $params = array(
-            'language' => 'pt-BR',
-            'query' => urlencode($search),
-            'page' => $page,
-            'include_adult' => $include_adult
-        );
-
-        try {
-            $data = $this->request('search/multi', $params);
-        } catch (Exception $e) {
-            $this->erro = true;
-            return $e->getMessage();
-        }
-
-        return $data;
-    }
 }
