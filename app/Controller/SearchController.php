@@ -31,8 +31,6 @@ class SearchController extends ErroController
             'pagination' => $this->pagination($this->page, $data['total_pages'])
         );
 
-        var_dump($isEmpty);
-
         echo $twig->render($template, $params);
     }
 
