@@ -18,12 +18,12 @@ class SearchController extends ErroController
         $twig = new \Twig\Environment($loader);
         $template = $twig->load('search.html');
 
-        $this->getPost();
+        $this->getRequest();
         $data = SearchModel::search($this->search, $this->page);
-        $find = sizeof($data['results']) == 0 ? false : true;
+        $isEmpty = SearchModel::isEmpty();
 
         $params = array(
-            'find' => $find,
+            'isEmpty' => $isEmpty,
             'all' => SearchModel::search($this->search, $this->page),
             'page' => $this->page,
             'title' => 'Pesquisar por: ' . $this->search,
@@ -31,10 +31,12 @@ class SearchController extends ErroController
             'pagination' => $this->pagination($this->page, $data['total_pages'])
         );
 
+        var_dump($isEmpty);
+
         echo $twig->render($template, $params);
     }
 
-    private function getPost()
+    private function getRequest()
     {
         if (sizeof($_GET) > 0) {
             if (isset($_GET['search'])) {

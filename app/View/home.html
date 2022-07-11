@@ -48,7 +48,7 @@
 
 {% block content %}
 
-<div class="row" id="populares">
+<div class="row">
     <div class="col-md-12">
         <h5 class="section-title">Filmes Populares</h5>
         <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
@@ -87,13 +87,91 @@
     </div>
 </div>
 
-<div class="row" id="populares">
+<div class="row">
     <div class="col-md-12">
         <h5 class="section-title">Séries Populares</h5>
         <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
         <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
             <div class="swiper-wrapper">
                 {% for serie in series_populares.results %}
+                {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
+                {% if serie.poster_path != null %}
+                {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
+                {% endif %}
+                <div class="swiper-slide">
+                    <div class="c">
+                        <div class="c-content">
+                            <div class="c-header">
+                                <a href="serie/detalhes/{{serie.id}}">
+                                    <img class="img-fluid"
+                                        src="https://image.tmdb.org/t/p/original{{serie.poster_path}}" />
+                                </a>
+                            </div>
+                            <div class="c-body">
+                                <a href="serie/detalhes/{{serie.id}}">
+                                    <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{serie.name}}</p>
+                                </a>
+                            </div>
+                            <div class="c-footer">
+                                <i class="fa-solid fa-star star"></i> {{serie.vote_average}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="f-2rem swiper-button-next"></div>
+            <div class="f-2rem swiper-button-prev"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h5 class="section-title">Melhores Filmes</h5>
+        <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
+        <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
+            <div class="swiper-wrapper">
+                {% for filme in melhores_filmes.results %}
+                {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
+                {% if filme.poster_path != null %}
+                {% set img_path = 'https://image.tmdb.org/t/p/original' ~ filme.poster_path %}
+                {% endif %}
+                <div class="swiper-slide">
+                    <div class="c">
+                        <div class="c-content">
+                            <div class="c-header">
+                                <a href="filme/detalhes/{{filme.id}}">
+                                    <img class="img-fluid"
+                                        src="https://image.tmdb.org/t/p/original{{filme.poster_path}}" />
+                                </a>
+                            </div>
+                            <div class="c-body">
+                                <a href="filme/detalhes/{{filme.id}}">
+                                    <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{filme.title}}</p>
+                                </a>
+                            </div>
+                            <div class="c-footer">
+                                <i class="fa-solid fa-star star"></i> {{filme.vote_average}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button-next" id="next"></div>
+            <div class="swiper-button-prev" id="prev"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h5 class="section-title">Melhores Séries</h5>
+        <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
+        <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
+            <div class="swiper-wrapper">
+                {% for serie in melhores_series.results %}
                 {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
                 {% if serie.poster_path != null %}
                 {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}

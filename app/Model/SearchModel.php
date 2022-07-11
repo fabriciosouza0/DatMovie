@@ -23,4 +23,9 @@ class SearchModel
 
         return $data;
     }
+
+    public static function isEmpty()
+    {
+        return self::$tmdbApi->isEmpty();
+    }
 }

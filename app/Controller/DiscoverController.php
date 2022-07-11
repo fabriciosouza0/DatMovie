@@ -22,9 +22,11 @@ class DiscoverController extends ErroController
         $template = $twig->load('filmes.html');
 
         $this->getPost();
+        $data = DiscoverModel::discover('movie', $this->page, $this->sort_by, $this->genre);
+        $isEmpty = DiscoverModel::isEmpty();
 
         $params = array(
-            'filmes' => DiscoverModel::discover('movie', $this->page, $this->sort_by, $this->genre),
+            'filmes' => $data,
             'page' => $this->page,
             'title' => Config::getPrefix() . 'Filmes',
             'generos' => DiscoverModel::generos('movie'),
@@ -32,6 +34,14 @@ class DiscoverController extends ErroController
             'genre' => $this->genre,
             'pagination' => $this->pagination($this->page, 3)
         );
+
+        if ($isEmpty) {
+            $template = $twig->load('error.html');
+
+            $params = array(
+                'title' => 'Página Inexistente'
+            );
+        }
 
         echo $twig->render($template, $params);
     }
@@ -47,9 +57,11 @@ class DiscoverController extends ErroController
         $template = $twig->load('series.html');
 
         $this->getPost();
+        $data = DiscoverModel::discover('tv', $this->page, $this->sort_by, $this->genre);
+        $isEmpty = DiscoverModel::isEmpty();
 
         $params = array(
-            'series' => DiscoverModel::discover('tv', $this->page, $this->sort_by, $this->genre),
+            'series' => $data,
             'page' => $this->page,
             'title' => Config::getPrefix() . 'Séries',
             'generos' => DiscoverModel::generos('tv'),
@@ -57,6 +69,14 @@ class DiscoverController extends ErroController
             'genre' => $this->genre,
             'pagination' => $this->pagination($this->page, 3)
         );
+
+        if ($isEmpty) {
+            $template = $twig->load('error.html');
+
+            $params = array(
+                'title' => 'Página Inexistente'
+            );
+        }
 
         echo $twig->render($template, $params);
     }
@@ -72,15 +92,25 @@ class DiscoverController extends ErroController
         $template = $twig->load('animes.html');
 
         $this->getPost();
+        $data = DiscoverModel::discover('tv', $this->page, $this->sort_by, '16,' . $this->genre);
+        $isEmpty = DiscoverModel::isEmpty();
 
         $params = array(
-            'series' => DiscoverModel::discover('tv', $this->page, $this->sort_by, '16,' . $this->genre),
+            'series' => $data,
             'page' => $this->page,
             'title' => Config::getPrefix() . 'Animes',
             'generos' => DiscoverModel::generos('tv'),
             'genre' => $this->genre,
             'pagination' => $this->pagination($this->page, 3)
         );
+
+        if ($isEmpty) {
+            $template = $twig->load('error.html');
+
+            $params = array(
+                'title' => 'Página Inexistente'
+            );
+        }
 
         echo $twig->render($template, $params);
     }

@@ -210,6 +210,16 @@ div#destaques .swiper-wrapper .swiper-slide {
 }
 
 @media (min-width: 280px) {
+    #menu .form-inline button[type=submit],
+    #menu .form-inline input[type=search] {
+        width: 100%;
+    }
+
+    #menu .form-inline {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
     .c-wrapper {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 3px;
@@ -256,6 +266,18 @@ div#destaques .swiper-wrapper .swiper-slide {
 
     .c .c-footer {
         font-size: 0.8rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #menu .form-inline button[type=submit] {
+        width: auto !important;
+    }
+
+    #menu .form-inline {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        column-gap: 5px;
     }
 }
 

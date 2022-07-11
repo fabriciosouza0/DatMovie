@@ -23,8 +23,8 @@
             <div class="col-md-8">
                 <div class="d-flex" style="flex-direction: column;">
                     <div id="title">
-                        <h5 style="font-weight: bold;">{{title}} <span style="font-size: 1rem;">({{data-estreia}}) -
-                                ({{data-fim}})</span>
+                        <h5 style="font-weight: bold;">{{title}} <span style="font-size: 1rem;">({{dataEstreia}}) -
+                                ({{dataFim}})</span>
                             <br /><small class="text-muted">{{tagline}}</small>
                         </h5>
                     </div>
@@ -37,7 +37,7 @@
                         <span style="font-size: 1.25rem; font-weight: bold;">Sinopse: </span>{{desc}}
                     </div>
                     <div id="time">
-                        <span style="font-size: 1.25rem; font-weight: bold;">Duração: </span>{{time}} min
+                        <span style="font-size: 1.25rem; font-weight: bold;">Temporadas: </span>{{temporadas}}
                     </div>
                     <div id="options">
                         <a class="btn btn-danger" href="https://embed.warezcdn.com/serie/{{imdbId}}"
@@ -50,9 +50,6 @@
                             <i class="fa-solid fa-share-nodes"></i>
                         </button>
                     </div>
-                    <style>
-
-                    </style>
                 </div>
             </div>
         </div>

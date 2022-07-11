@@ -27,7 +27,7 @@ const destaques = new Swiper("#destaques", {
     },
 });
 
-const populares = new Swiper("#populares .swiper", {
+const populares = new Swiper(".row .swiper", {
     breakpoints: {
         375: {
             slidesPerView: 2,

@@ -14,7 +14,7 @@ class FilmeController extends ErroController
 
         $filme = FilmeModel::detalhes($filmeId);
 
-        if (!is_array($filme) || FilmeModel::getError()) {
+        if (FilmeModel::isEmpty()) {
             $params = array(
                 'title' => 'Página Inexistente'
             );

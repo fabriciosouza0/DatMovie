@@ -14,7 +14,7 @@ class SerieController extends ErroController
 
         $serie = SerieModel::detalhesDaSerie($serieId);
 
-        if (!is_array($serie) || SerieModel::getError()) {
+        if (SerieModel::isEmpty()) {
             $params = array(
                 'title' => 'Página Inexistente'
             );
@@ -26,8 +26,9 @@ class SerieController extends ErroController
             $params = array(
                 'title' => $serie['name'],
                 'imdbId' => $serie[0],
-                'data-estreia' => $serie['first_air_date'],
-                'data-fim' => $serie['last_air_date'],
+                'dataEstreia' => substr($serie['first_air_date'], 0, 4),
+                'dataFim' => substr($serie['last_air_date'], 0, 4),
+                'temporadas' => $serie['number_of_seasons'],
                 'poster' => 'https://image.tmdb.org/t/p/original' . $serie['poster_path'],
                 'backdrop' => 'https://image.tmdb.org/t/p/original' . $serie['backdrop_path'],
                 'tagline' => $serie['tagline'],

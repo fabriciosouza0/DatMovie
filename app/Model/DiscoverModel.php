@@ -26,9 +26,20 @@ class DiscoverModel
         return $data;
     }
 
-    public static function generos($target = 'movie')
+    public static function generos($target)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
-        return self::$tmdbApi->generos($target);
+        $params = array(
+            'language' => 'pt-BR'
+        );
+
+        $data = self::$tmdbApi->request('genre/' . $target . '/list', $params);
+
+        return $data;
+    }
+
+    public static function isEmpty()
+    {
+        return self::$tmdbApi->isEmpty();
     }
 }
