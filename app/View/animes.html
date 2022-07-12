@@ -12,32 +12,31 @@
 <div class="row">
     <div class="col-md-12">
         <button class="btn-options"><i class="fa-solid fa-filter"></i> Filtrar</button>
-        <form class="form-options d-none" action="" method="post">
-            <div>
+        <form class="form-inline form-options d-none" action="" method="post">
+            <div class="form-group">
                 <label for="order">Ordem:</label>
-                <select name="order" id="order">
+                <select class="form-control" name="order" id="order">
+                    <option value=""></option>
                     <option value="pupularity.desc">Popularidade Desc</option>
                     <option value="pupularity.asc">Popularidade Asc</option>
                 </select>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="genero">Gênero:</label>
-                <select name="genero" id="genero">
+                <select class="form-control" name="genero" id="genero">
                     <option value=""></option>
                     {% for data in generos %}
-                        {% for genero in data %}
-                            {% if genero.id == genre %}
-                            <option value="{{genero.id}}" selected>{{genero.name}}</option>
-                            {% else %}
-                                {% if genero.id != 16 %}
-                                <option value="{{genero.id}}">{{genero.name}}</option>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
+                    {% for genero in data %}
+                    {% if genero.id == genre %}
+                    <option value="{{genero.id}}" selected>{{genero.name}}</option>
+                    {% else %}
+                    <option value="{{genero.id}}">{{genero.name}}</option>
+                    {% endif %}
+                    {% endfor %}
                     {% endfor %}
                 </select>
             </div>
-            <button type="submit">aplicar</button>
+            <button class="btn btn-dark" type="submit">aplicar</button>
         </form>
     </div>
 </div>
