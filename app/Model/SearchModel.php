@@ -8,7 +8,7 @@ class SearchModel
 {
     private static $tmdbApi;
 
-    public static function search($search, $page = 1, $include_adult = true)
+    public static function search($search, $page = 1, $include_adult = false)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
 
