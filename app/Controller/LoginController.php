@@ -2,7 +2,6 @@
 
 namespace app\Controller;
 
-use app\lib\Config\Config;
 use app\Model\LoginModel;
 
 class LoginController
@@ -21,7 +20,7 @@ class LoginController
         $template = $twig->load('login.html');
 
         $params = array(
-            'title' => Config::getPrefix() . 'Login'
+            'title' => 'Login'
         );
 
         echo $twig->render($template, $params);

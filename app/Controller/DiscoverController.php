@@ -2,7 +2,6 @@
 
 namespace app\Controller;
 
-use app\lib\Config\Config;
 use app\Model\DiscoverModel;
 
 class DiscoverController extends ErroController
@@ -28,7 +27,7 @@ class DiscoverController extends ErroController
         $params = array(
             'filmes' => $data,
             'page' => $this->page,
-            'title' => Config::getPrefix() . 'Filmes',
+            'title' => 'Filmes',
             'generos' => DiscoverModel::generos('movie'),
             'order' => $this->sort_by,
             'genre' => $this->genre,
@@ -63,7 +62,7 @@ class DiscoverController extends ErroController
         $params = array(
             'series' => $data,
             'page' => $this->page,
-            'title' => Config::getPrefix() . 'Séries',
+            'title' => 'Séries',
             'generos' => DiscoverModel::generos('tv'),
             'order' => $this->sort_by,
             'genre' => $this->genre,
@@ -98,7 +97,7 @@ class DiscoverController extends ErroController
         $params = array(
             'series' => $data,
             'page' => $this->page,
-            'title' => Config::getPrefix() . 'Animes',
+            'title' => 'Animes',
             'generos' => DiscoverModel::generos('tv'),
             'order' => $this->sort_by,
             'genre' => $this->genre,

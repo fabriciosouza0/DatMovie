@@ -2,7 +2,6 @@
 
 namespace app\Controller;
 
-use app\lib\Config\Config;
 use app\Model\HomeModel;
 
 class HomeController
