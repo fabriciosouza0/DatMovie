@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $('#home').addClass('active');
 });
 
@@ -28,6 +28,7 @@ const destaques = new Swiper("#destaques", {
 });
 
 const populares = new Swiper(".row .swiper", {
+    lazy: true,
     breakpoints: {
         375: {
             slidesPerView: 2,

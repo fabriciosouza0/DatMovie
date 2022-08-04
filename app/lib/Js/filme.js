@@ -3,6 +3,8 @@ $(document).ready(function() {
 });
 
 const swiper = new Swiper("#relacionados .swiper", {
+    preloadImages: false,
+    lazy: true,
     cssMode: true,
     navigation: {
         nextEl: ".swiper-button-next",

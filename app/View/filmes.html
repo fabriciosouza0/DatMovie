@@ -18,11 +18,12 @@
                     <label for="order">Ordem:</label>
                 </div>
                 <div>
-                    <select class="form-control" name="order" id="order">
-                        <option value=""></option>
-                        <option value="pupularity.desc">Popularidade Desc</option>
-                        <option value="pupularity.asc">Popularidade Asc</option>
-                    </select>
+                    {% if order == 'popularity.asc' %}
+                    <input class="form-control" type="checkbox" name="order" id="order" checked />
+                    {% else %}
+                    <input class="form-control" type="checkbox" name="order" id="order" />
+                    {% endif %}
+                    <label class="fa-solid fa-arrow-down-wide-short" id="order_icon"></label>
                 </div>
             </div>
             <div class="form-group">
@@ -43,8 +44,6 @@
                         {% endfor %}
                     </select>
                 </div>
-                
-                
             </div>
             <button class="btn btn-dark" type="submit">aplicar</button>
         </form>
@@ -62,7 +61,7 @@
                 <div class="c-content">
                     <div class="c-header">
                         <a href="filme/detalhes/{{filme.id}}">
-                            <img class="img-fluid" src="{{img_path}}" />
+                            <img class="img-fluid lazy" data-lazy="{{img_path}}" />
                         </a>
                     </div>
                     <div class="c-body">

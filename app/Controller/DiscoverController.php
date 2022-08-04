@@ -100,6 +100,7 @@ class DiscoverController extends ErroController
             'page' => $this->page,
             'title' => Config::getPrefix() . 'Animes',
             'generos' => DiscoverModel::generos('tv'),
+            'order' => $this->sort_by,
             'genre' => $this->genre,
             'pagination' => $this->pagination($this->page, 3)
         );
@@ -118,14 +119,19 @@ class DiscoverController extends ErroController
     private function getPost()
     {
         if (sizeof($_POST) > 0) {
-            if (isset($_POST['order']) && isset($_POST['genero'])) {
-                $this->sort_by = $_POST['order'];
+            if (isset($_POST['order'])) {
+                $this->sort_by = 'popularity.asc';
+            }
+
+            if (isset($_POST['genero'])) {
                 $this->genre = $_POST['genero'];
             }
+
             if (isset($_POST['page'])) {
                 $this->page = $_POST['page'];
             }
         }
+        echo $this->sort_by;
     }
 
     private function pagination($page, $total_pages)

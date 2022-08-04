@@ -3,6 +3,7 @@ $(document).ready(function() {
 });
 
 const swiper = new Swiper(".swiper", {
+    lazy: true,
     breakpoints: {
         375: {
             slidesPerView: 2,

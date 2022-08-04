@@ -38,7 +38,7 @@
 
 .form-options .form-group,
 .form-options .form-group div,
-.form-options .form-group select{
+.form-options .form-group select {
     width: 100%;
 }
 
@@ -84,6 +84,20 @@
     width: 100%;
 }
 
+#order {
+    visibility: hidden;
+    position: absolute;
+}
+
+#order_icon {
+    transform: rotate(180deg);
+    transition: all .2s ease-in-out;
+}
+
+#order:checked~#order_icon {
+    transform: rotate(0deg);
+}
+
 @media (min-width: 768px) {
     .form-options {
         display: flex;
@@ -97,6 +111,10 @@
         background-color: #333;
     }
 
+    .form-options .form-group {
+        column-gap: 5px;
+    }
+
     .form-options button {
         width: auto;
     }
@@ -104,10 +122,10 @@
     .form-options .form-group {
         flex-direction: row;
     }
-    
+
     .form-options .form-group,
     .form-options .form-group div,
-    .form-options .form-group select{
+    .form-options .form-group select {
         width: auto;
     }
 }
