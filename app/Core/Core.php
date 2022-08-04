@@ -22,7 +22,7 @@ class Core
         if (isset($url['url'])) {
             $url = explode('/', $url['url']);
 
-            $this->controller = Config::getController() . ucfirst($url[0]) . Config::getSufix();
+            $this->controller = 'app\\Controller\\' . ucfirst($url[0]) . 'Controller';
             array_shift($url);
 
             if (isset($url[0]) && $url[0] != '') {
@@ -31,7 +31,7 @@ class Core
             }
 
             if (!class_exists($this->controller)) {
-                $this->controller = Config::getController() . 'ErroController';
+                $this->controller = 'app\\Controller\\' .  'ErroController';
                 $this->title = Config::getPrefix() . 'Página não encontrada';
             }
 
