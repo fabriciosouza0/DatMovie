@@ -130,7 +130,6 @@ class DiscoverController extends ErroController
                 $this->page = $_POST['page'];
             }
         }
-        echo $this->sort_by;
     }
 
     private function pagination($page, $total_pages)
