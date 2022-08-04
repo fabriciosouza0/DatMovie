@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    switch (document.title.substring(10)) {
+    switch (document.title) {
         case 'Séries':
             $('#series').addClass('active');
             break;
