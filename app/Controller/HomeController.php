@@ -19,7 +19,7 @@ class HomeController
             'series_populares' => HomeModel::getMedias('tv','popular',1),
             'melhores_filmes' => HomeModel::getMedias('movie','top_rated',1),
             'melhores_series' => HomeModel::getMedias('tv','top_rated',1),
-            'title' => Config::getPrefix() . 'Home'
+            'title' => 'Home'
         );
 
         echo $twig->render($template, $data);;
