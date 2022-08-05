@@ -2,8 +2,6 @@
 
 namespace app\Controller;
 
-use app\lib\Config\Config;
-
 class CadastroController
 {
     public function index()
@@ -13,7 +11,7 @@ class CadastroController
         $template = $twig->load('cadastro.html');
 
         $params = array(
-            'title' => Config::getPrefix() . 'Cadastro'
+            'title' => 'Cadastro'
         );
 
         echo $twig->render($template, $params);

@@ -2,8 +2,6 @@
 
 namespace app\Core;
 
-use app\lib\Config\Config;
-
 class Core
 {
     private $controller;
@@ -32,7 +30,7 @@ class Core
 
             if (!class_exists($this->controller)) {
                 $this->controller = 'app\\Controller\\' .  'ErroController';
-                $this->title = Config::getPrefix() . 'Página não encontrada';
+                $this->title = 'Página não encontrada';
             }
 
             $this->params = $url;
