@@ -22,10 +22,11 @@ class DetalhesController extends ErroController
             $template = $twig->load('error.html');
         } else {
             $overview = strlen($data['overview']) > 230 ? substr($data['overview'], 0, 230) . '...' : $data['overview'];
+            $poster = $data['poster_path'] ? 'https://image.tmdb.org/t/p/original' . $data['poster_path'] : 'app/lib/Style/Images/img-not-found.png';
 
             $params = array(
                 'title' => $data['title'],
-                'poster' => 'https://image.tmdb.org/t/p/original' . $data['poster_path'],
+                'poster' => $poster,
                 'backdrop' => 'https://image.tmdb.org/t/p/original' . $data['backdrop_path'],
                 'imdbId' => $data['imdb_id'],
                 'tagline' => $data['tagline'],

@@ -85,10 +85,11 @@
     />
     <div class="swiper" style="padding-left: 40px; padding-right: 40px">
       <div class="swiper-wrapper">
-        {% for serie in relacionados.results %} {% set img_path =
-        'app/lib/Style/Images/img-not-found.png' %} {% if serie.poster_path !=
-        null %} {% set img_path = 'https://image.tmdb.org/t/p/original' ~
-        serie.poster_path %} {% endif %}
+        {% for serie in relacionados.results %} 
+        {% set img_path = 'app/lib/Style/Images/img-not-found.png' %} 
+        {% if serie.poster_path != null %} 
+        {% set img_path = 'https://image.tmdb.org/t/p/original' ~serie.poster_path %} 
+        {% endif %}
         <div class="swiper-slide">
           <div class="c">
             <div class="c-content">
@@ -96,7 +97,7 @@
                 <a href="detalhes/serie/{{serie.id}}">
                   <img
                     class="img-fluid lazy"
-                    data-lazy="https://image.tmdb.org/t/p/original{{serie.poster_path}}"
+                    data-lazy="{{img_path}}"
                   />
                 </a>
               </div>
