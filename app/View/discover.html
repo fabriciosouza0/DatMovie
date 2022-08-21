@@ -70,20 +70,22 @@
 
         {% if media_type == 'filme' %}
           {% set mediaTitle = item.title %}
+          {% set target = 'filme' %}
         {% elseif media_type == 'serie' %}
           {% set mediaTitle = item.name %}
         {% else %}
           {% set mediaTitle = item.name %}
+          {% set target = 'serie' %}
         {% endif %}
         <div class="c">
           <div class="c-content">
             <div class="c-header">
-              <a href="detalhes/{{media_type}}/{{item.id}}">
+              <a href="detalhes/{{target}}/{{item.id}}">
                 <img class="img-fluid lazy" data-lazy="{{img_path}}" />
               </a>
             </div>
             <div class="c-body">
-              <a href="detalhes/{{media_type}}/{{item.id}}">
+              <a href="detalhes/{{target}}/{{item.id}}">
                 <p style="font-weight: bold; font-size: 1rem; margin: 0">
                   {{mediaTitle}}
                 </p>
