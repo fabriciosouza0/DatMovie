@@ -49,6 +49,8 @@ const load = (e) => {
           url.pathname.split("/")[1] +
           "app/Model/LoadMoreModel.php";
 
+        console.log(baseUrl);
+
         request(baseUrl, mediaType, order, genre);
       }
     });
