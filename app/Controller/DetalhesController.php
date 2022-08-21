@@ -56,6 +56,7 @@ class DetalhesController extends ErroController
             $template = $twig->load('error.html');
         } else {
             $overview = strlen($data['overview']) > 230 ? substr($data['overview'], 0, 230) . '...' : $data['overview'];
+            $poster = $data['poster_path'] ? 'https://image.tmdb.org/t/p/original' . $data['poster_path'] : 'app/lib/Style/Images/img-not-found.png';
 
             $params = array(
                 'title' => $data['name'],
@@ -63,7 +64,7 @@ class DetalhesController extends ErroController
                 'dataEstreia' => substr($data['first_air_date'], 0, 4),
                 'dataFim' => substr($data['last_air_date'], 0, 4),
                 'temporadas' => $data['number_of_seasons'],
-                'poster' => 'https://image.tmdb.org/t/p/original' . $data['poster_path'],
+                'poster' => $poster,
                 'backdrop' => 'https://image.tmdb.org/t/p/original' . $data['backdrop_path'],
                 'tagline' => $data['tagline'],
                 'desc' => $overview,
