@@ -53,6 +53,7 @@ const load = (e) => {
   autoLoad.observe(document.getElementById("loadMore"));
 };
 
+// Request data from model
 const request = (baseUrl, mediaType, order, genre) => {
   const wrapper = $(".c-wrapper");
   const mediaContent = $("#loadMore");
@@ -67,9 +68,9 @@ const request = (baseUrl, mediaType, order, genre) => {
 
   if (!$.contains(mediaContent, divLoading)) mediaContent.append(divLoading); //Add animation of loading after container
 
-  let target;
+  let target; // Control Method 
 
-  switch (mediaType) {
+  switch (mediaType) {// Switch type of media
     case 'filme':
       target = 'filme';
       break;
