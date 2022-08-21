@@ -4,26 +4,28 @@ namespace app\Model;
 
 use app\api\modules\TMDB_api;
 
-class SerieModel
+class DetalhesModel
 {
     private static $tmdbApi;
 
-    public static function detalhesDaSerie($id)
+    public static function detalhes($mediaType, $id)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
         $params = array(
             'language' => 'pt-BR'
         );
 
-        $data = self::$tmdbApi->request('tv/' . $id, $params);
+        $data = self::$tmdbApi->request($mediaType . '/' . $id, $params);
 
-        $imdb_id = self::$tmdbApi->request('tv/' . $id . '/external_ids', $params);
-        array_unshift($data, $imdb_id['imdb_id']);
+        if ($mediaType == 'tv') {
+            $imdb_id = self::$tmdbApi->request($mediaType . '/' . $id . '/external_ids', $params);
+            array_unshift($data, $imdb_id['imdb_id']);
+        }
 
         return $data;
     }
 
-    public static function SeriesRelacionadas($id)
+    public static function relacionados($mediaType, $id)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
         $params = array(
@@ -31,7 +33,7 @@ class SerieModel
             'page' => 1
         );
 
-        $data = self::$tmdbApi->request('tv/' . $id . '/similar', $params);
+        $data = self::$tmdbApi->request($mediaType . '/' . $id . '/similar', $params);
 
         return $data;
     }

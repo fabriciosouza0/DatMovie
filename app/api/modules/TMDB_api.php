@@ -14,6 +14,13 @@ class TMDB_api
         $this->key = TMDB_config::getTmdbApiKey();
         $this->isEmpty = false;
 
+        $this->pagination = array(
+            'before' => 1,
+            'index' => 1,
+            'after' => 2,
+            'pages' => []
+        );
+
         if (!empty($key)) {
             $this->key = $key;
         }
@@ -41,7 +48,18 @@ class TMDB_api
             if (!is_array($response)) {
                 $this->isEmpty = true;
             } elseif (isset($response['results'])) {
-                if (sizeof($response['results']) < 1) $this->isEmpty = true;
+                if (sizeof($response['results']) < 1) {
+                    $this->isEmpty = true;
+                } else {
+                    foreach ($response['results'] as $key => $media) {
+                        if (isset($media["vote_average"])) {
+                            $vote_average = $media["vote_average"];
+                            $rate = round($vote_average, 1);
+
+                            $response['results'][$key]["vote_average"] = $rate;
+                        }
+                    }
+                }
             }
 
             return $response;

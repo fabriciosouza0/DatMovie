@@ -90,12 +90,32 @@
 }
 
 #order_icon {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
     transition: all .2s ease-in-out;
 }
 
 #order:checked~#order_icon {
-    transform: rotate(0deg);
+    transform: rotate(180deg);
+}
+
+#load_more {
+    background-color: rgba(255, 255, 255, 0);
+    color: #fff;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+#load_more:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+#loading {
+    position: relative;
+    width: 100%;
+    height: 40px;
 }
 
 @media (min-width: 768px) {

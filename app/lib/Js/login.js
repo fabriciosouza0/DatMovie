@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/* $(document).ready(function () {
 
     $("#submit_login").click(function (e) {
         e.preventDefault();
@@ -40,4 +40,4 @@ $(document).ready(function () {
         $('div#alert_login').hide();
     });
 
-});
+}); */

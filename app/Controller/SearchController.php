@@ -36,14 +36,8 @@ class SearchController extends ErroController
 
     private function getRequest()
     {
-        if (sizeof($_GET) > 0) {
-            if (isset($_GET['search'])) {
-                $this->search = $_GET['search'];
-            }
-            if (isset($_GET['page'])) {
-                $this->page = $_GET['page'];
-            }
-        }
+        $this->search = isset($_GET['search']) ? $_GET['search'] : null;
+        $this->page = isset($_GET['page']) ? $_GET['page'] : 1;
     }
 
     private function pagination($page, $total_pages)

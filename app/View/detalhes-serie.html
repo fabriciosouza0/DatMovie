@@ -1,107 +1,126 @@
-{% extends 'Template/structure.html' %}
-
-{% block theme %}{{theme}}{% endblock %}
-
+{% extends 'Template/structure.html' %} {% block theme %}{{theme}}{% endblock %}
 {% block css %}
-<link rel="stylesheet" href="app/lib/Style/detalhes.css">
-<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-{% endblock %}
-
-{% block title %}{{title}}{% endblock %}
-{% block slide %}
-<div class="container-fluid" id="backdrop"
-    style="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url({{backdrop}});">
-    <div class="container">
-        <div class="row" id="mb-flex">
-            <div class="col-md-4" id="poster_container">
-                <div class="d-flex justify-content-center" id="poster">
-                    <a href="https://embed.warezcdn.com/serie/{{imdbId}}">
-                        <img class="img-thumbnail" src="{{poster}}" />
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="d-flex" style="flex-direction: column;">
-                    <div id="title">
-                        <h5 style="font-weight: bold;">{{title}} <span style="font-size: 1rem;">({{dataEstreia}}) -
-                                ({{dataFim}})</span>
-                            <br /><small class="text-muted">{{tagline}}</small>
-                        </h5>
-                    </div>
-                    <div class="d-flex justify-content-center" id="poster-mb">
-                        <a href="https://embed.warezcdn.com/filme/{{imdbId}}">
-                            <img class="img-thumbnail" src="{{poster}}" />
-                        </a>
-                    </div>
-                    <div id="desc">
-                        <span style="font-size: 1.25rem; font-weight: bold;">Sinopse: </span>{{desc}}
-                    </div>
-                    <div id="time">
-                        <span style="font-size: 1.25rem; font-weight: bold;">Temporadas: </span>{{temporadas}}
-                    </div>
-                    <div id="options">
-                        <a class="btn btn-danger" href="https://embed.warezcdn.com/serie/{{imdbId}}"
-                            data-toggle="tooltip" data-placement="top" title="Reproduzir {{title}}"
-                            style="border-radius: 50%;">
-                            <i class="fa-solid fa-play"></i>
-                        </a>
-                        <button class="btn btn-danger" data-toggle="tooltip" data-placement="top"
-                            title="Compartilhar o titulo: {{title}}" style="border-radius: 50%;">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+<link rel="stylesheet" href="app/lib/Style/detalhes.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+/>
+{% endblock %} {% block title %}{{title}}{% endblock %} {% block slide %}
+<div
+  class="container-fluid"
+  id="backdrop"
+  style="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url({{backdrop}});"
+>
+  <div class="container">
+    <div class="row" id="mb-flex">
+      <div class="col-md-4" id="poster_container">
+        <div class="d-flex justify-content-center" id="poster">
+          <a href="https://embed.warezcdn.com/serie/{{imdbId}}">
+            <img class="img-thumbnail" src="{{poster}}" />
+          </a>
         </div>
+      </div>
+      <div class="col-md-8">
+        <div class="d-flex" style="flex-direction: column">
+          <div id="title">
+            <h5 style="font-weight: bold">
+              {{title}}
+              <span style="font-size: 1rem"
+                >({{dataEstreia}}) - ({{dataFim}})</span
+              >
+              <br /><small class="text-muted">{{tagline}}</small>
+            </h5>
+          </div>
+          <div class="d-flex justify-content-center" id="poster-mb">
+            <a href="https://embed.warezcdn.com/filme/{{imdbId}}">
+              <img class="img-thumbnail" src="{{poster}}" />
+            </a>
+          </div>
+          <div id="desc">
+            <span style="font-size: 1.25rem; font-weight: bold">Sinopse: </span
+            >{{desc}}
+          </div>
+          <div id="time">
+            <span style="font-size: 1.25rem; font-weight: bold"
+              >Temporadas: </span
+            >{{temporadas}}
+          </div>
+          <div id="options">
+            <a
+              class="btn btn-danger"
+              href="https://embed.warezcdn.com/serie/{{imdbId}}"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Reproduzir {{title}}"
+              style="border-radius: 50%"
+            >
+              <i class="fa-solid fa-play"></i>
+            </a>
+            <button
+              class="btn btn-danger"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Compartilhar o titulo: {{title}}"
+              style="border-radius: 50%"
+            >
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="row" id="relacionados">
-    <div class="col-md-12">
-        <h5 class="section-title">Relacionados</h5>
-        <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
-        <div class="swiper" style="padding-left: 40px; padding-right: 40px;">
-            <div class="swiper-wrapper">
-                {% for serie in relacionados.results %}
-                {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
-                {% if serie.poster_path != null %}
-                {% set img_path = 'https://image.tmdb.org/t/p/original' ~ serie.poster_path %}
-                {% endif %}
-                <div class="swiper-slide">
-                    <div class="c">
-                        <div class="c-content">
-                            <div class="c-header">
-                                <a href="serie/detalhes/{{serie.id}}">
-                                    <img class="img-fluid lazy"
-                                        data-lazy="https://image.tmdb.org/t/p/original{{serie.poster_path}}" />
-                                </a>
-                            </div>
-                            <div class="c-body">
-                                <a href="serie/detalhes/{{serie.id}}">
-                                    <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{serie.name}}</p>
-                                </a>
-                            </div>
-                            <div class="c-footer">
-                                <i class="fa-solid fa-star star"></i> {{serie.vote_average}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+  <div class="col-md-12">
+    <h5 class="section-title">Relacionados</h5>
+    <hr
+      style="
+        margin-bottom: 0.5rem;
+        width: 100%;
+        height: 0.3em;
+        background-color: brown;
+      "
+    />
+    <div class="swiper" style="padding-left: 40px; padding-right: 40px">
+      <div class="swiper-wrapper">
+        {% for serie in relacionados.results %} {% set img_path =
+        'app/lib/Style/Images/img-not-found.png' %} {% if serie.poster_path !=
+        null %} {% set img_path = 'https://image.tmdb.org/t/p/original' ~
+        serie.poster_path %} {% endif %}
+        <div class="swiper-slide">
+          <div class="c">
+            <div class="c-content">
+              <div class="c-header">
+                <a href="detalhes/serie/{{serie.id}}">
+                  <img
+                    class="img-fluid lazy"
+                    data-lazy="https://image.tmdb.org/t/p/original{{serie.poster_path}}"
+                  />
+                </a>
+              </div>
+              <div class="c-body">
+                <a href="detalhes/serie/{{serie.id}}">
+                  <p style="font-weight: bold; font-size: 1rem; margin: 0">
+                    {{serie.name}}
+                  </p>
+                </a>
+              </div>
+              <div class="c-footer">
+                <i class="fa-solid fa-star star"></i> {{serie.vote_average}}
+              </div>
             </div>
-            <div class="swiper-button-next" id="next"></div>
-            <div class="swiper-button-prev" id="prev"></div>
+          </div>
         </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-next" id="next"></div>
+      <div class="swiper-button-prev" id="prev"></div>
     </div>
+  </div>
 </div>
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
-
-{% block additionalScripts %}
+{% endblock %} {% block footer %} {% endblock %} {% block additionalScripts %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="app/lib/Js/serie.js"></script>
+<script src="app/lib/Js/detalhes.js"></script>
 {% endblock %}

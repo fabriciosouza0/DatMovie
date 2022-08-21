@@ -1,0 +1,128 @@
+{% extends 'Template/structure.html' %} {% block theme %}{{theme}}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="app/lib/Style/discover.css" />
+{% endblock %} {% block title %}{{title}}{% endblock %} 
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <button class="btn-options">
+      <i class="fa-solid fa-filter"></i> Filtrar
+    </button>
+    <form class="form-inline form-options d-none" action="" method="get">
+      <div class="form-group">
+        <input type="hidden" name="page" value="{{page}}" />
+        <div>
+          <label for="order">Ordem:</label>
+        </div>
+        <div>
+          {% if order %}
+          <input
+            class="form-control"
+            type="checkbox"
+            name="order"
+            id="order"
+            checked
+          />
+          {% else %}
+          <input class="form-control" type="checkbox" name="order" id="order" />
+          {% endif %}
+          <label
+            for="order"
+            class="fa-solid fa-arrow-down-wide-short"
+            id="order_icon"
+          ></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="genero">Gênero:</label>
+        </div>
+        <div>
+          <select class="form-control" name="genre" id="genero">
+            <option value=""></option>
+            {% for data in generos %} 
+              {% for genero in data %} 
+                {% if genero.id == genre %}
+                  <option value="{{genero.id}}" selected>{{genero.name}}</option>
+                {% elseif (media_type == 'serie' or media_type == 'anime') and genero.id == 16 %}
+                  <!-- <option value="{{genero.id}}">{{genero.name}}</option> -->
+                {% else %}
+                  <option value="{{genero.id}}">{{genero.name}}</option>
+                {% endif %} 
+              {% endfor %} 
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-dark" type="submit">aplicar</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" id="mediaContent">
+    <div class="c-wrapper">
+      {% for item in data.results %} 
+        {% set img_path = 'app/lib/Style/Images/img-not-found.png' %} 
+
+        {% if item.poster_path != null %} 
+          {% set img_path = 'https://image.tmdb.org/t/p/original' ~ item.poster_path %} 
+        {% endif %}
+
+        {% if media_type == 'filme' %}
+          {% set mediaTitle = item.title %}
+        {% elseif media_type == 'serie' %}
+          {% set mediaTitle = item.name %}
+        {% else %}
+          {% set mediaTitle = item.name %}
+        {% endif %}
+        <div class="c">
+          <div class="c-content">
+            <div class="c-header">
+              <a href="detalhes/{{media_type}}/{{item.id}}">
+                <img class="img-fluid lazy" data-lazy="{{img_path}}" />
+              </a>
+            </div>
+            <div class="c-body">
+              <a href="detalhes/{{media_type}}/{{item.id}}">
+                <p style="font-weight: bold; font-size: 1rem; margin: 0">
+                  {{mediaTitle}}
+                </p>
+              </a>
+            </div>
+            <div class="c-footer">
+              <i class="fa-solid fa-star star"></i> {{item.vote_average}}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 flex justify-content-center" id="loadMore">
+    <button id="load_more" onclick="load(event)"><i class="fa-solid fa-plus"></i></button>
+    {% if media_type == 'filme' %}
+      <input type="hidden" id="mediaType" value="filme" />
+    {% elseif media_type == 'serie'  %}
+      <input type="hidden" id="mediaType" value="serie" />
+    {% elseif media_type == 'anime'  %}
+      <input type="hidden" id="mediaType" value="anime" />
+    {% endif %}
+
+    {% if order and order == 'on' %}
+    <input type="hidden" id="fixedOrder" value="popularity.asc" />
+    {% else %}
+    <input type="hidden" id="fixedOrder" value="popularity.desc" />
+    {% endif %}
+
+    {% if media_type == 'anime' %}
+      <input type="hidden" id="genre" value="{{defaultGenre}},{{genre}}" />
+    {% else %}
+    <input type="hidden" id="genre" value="{{genre}}" />
+    {% endif %}
+  </div>
+</div>
+{% endblock %} {% block footer %} {% endblock %} 
+{% block additionalScripts %}
+<script src="app/lib/Js/discover.js"></script>
+{% endblock %}

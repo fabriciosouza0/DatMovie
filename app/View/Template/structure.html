@@ -2,130 +2,136 @@
 <html lang="pt-br">
 
 <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000">
-    <base href="https://datmovie.herokuapp.com/">
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000" />
+  <base href="https://datmovie.herokuapp.com/" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="app/lib/Style/Favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="app/lib/Style/Favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="app/lib/Style/Favicon/favicon-16x16.png">
-    <link rel="manifest" href="app/lib/Style/Favicon/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="app/lib/Style/Favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="app/lib/Style/Favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="app/lib/Style/Favicon/favicon-16x16.png" />
+  <link rel="manifest" href="app/lib/Style/Favicon/site.webmanifest" />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="app/lib/Style/Theme/main.css">
-    <link rel="stylesheet" href="app/lib/Style/Theme/dark.css">
-    {% block css %}
-    {% endblock %}
-    <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <link rel="stylesheet" href="app/lib/Style/Theme/main.css" />
+  <link rel="stylesheet" href="app/lib/Style/Theme/dark.css" />
+  {% block css %} {% endblock %}
+  <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="menu">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href=""><img src="app/lib/Style/Images/logo.png" width="50" height="50" alt=""></a>
+<body onload="onload()">
+  <div class="flex align-items-center justify-content-center loading" id="load">
+    <section class="section">
+      <span class="loader loader-circles"></span>
+    </section>
+  </div>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" id="menu">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href=""><img src="app/lib/Style/Images/logo.png" width="50" height="50" alt="" /></a>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item" id="home">
-                        <a class="nav-link" href="">Home <span class="sr-only">(página
-                                atual)</span></a>
-                    </li>
-                    <li class="nav-item" id="filmes">
-                        <a class="nav-link" href="discover/filmes">Filmes</a>
-                    </li>
-                    <li class="nav-item" id="series">
-                        <a class="nav-link" href="discover/series">Séries</a>
-                    </li>
-                    <li class="nav-item" id="animes">
-                        <a class="nav-link" href="discover/animes">Animes</a>
-                    </li>
-                </ul>
-                <form class="form-inline" method="get" action="search/all">
-                    <input name="search" class="form-control" type="search" placeholder="Pesquisar"
-                        aria-label="Pesquisar" required>
-                    <button type="submit" class="btn btn-outline-secondary"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" id="home">
+            <a class="nav-link" href="">Home <span class="sr-only">(página atual)</span></a>
+          </li>
+          <li class="nav-item" id="filmes">
+            <a class="nav-link" href="discover/filmes">Filmes</a>
+          </li>
+          <li class="nav-item" id="series">
+            <a class="nav-link" href="discover/series">Séries</a>
+          </li>
+          <li class="nav-item" id="animes">
+            <a class="nav-link" href="discover/animes">Animes</a>
+          </li>
+        </ul>
+        <form class="form-inline" method="get" action="search/all">
+          <input name="search" class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar"
+            required />
+          <button type="submit" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  {% block slide %} {% endblock %}
+  <main class="container" id="content">
+    {% block content %} {% endblock %}
+  </main>
+
+  <footer class="container-fluid bg-dark" id="footer">
+    <div class="container">
+      <div class="row" style="align-items: stretch">
+        <div class="col-md-4">
+          <nav class="nav flex-column">
+            <div class="nav-title">
+              <h6 style="padding: 0.5rem 1rem">Navegação</h6>
             </div>
-        </div>
-    </nav>
-
-    {% block slide %}
-    {% endblock %}
-    <main class="container" id="content">
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <footer class="container-fluid bg-dark " id="footer">
-        <div class="container">
-            <div class="row" style="align-items: stretch;">
-                <div class="col-md-4">
-                    <nav class="nav flex-column">
-                        <div class="nav-title">
-                            <h6 style="padding: .5rem 1rem;">Navegação</h6>
-                        </div>
-                        <div class="nav-items">
-                            <a class="nav-link" href="">Home</a>
-                            <a class="nav-link" href="discover/filmes">Filmes</a>
-                            <a class="nav-link" href="discover/series">Séries</a>
-                            <a class="nav-link" href="discover/animes">Animes</a>
-                        </div>
-                    </nav>
-                </div>
-                <hr width="100%" />
-                <div class="col-md-4">
-                    <nav class="nav flex-column">
-                        <div class="nav-title">
-                            <h6 style="display: block; padding: .5rem 1rem;">Contate-nos</h6>
-                        </div>
-                        <div class="nav-items">
-                            <a class="nav-link" href="#"><i class="fa-brands fa-instagram fa-lg"></i> Instagram</a>
-                            <a class="nav-link" href="#"><i class="fa-brands fa-youtube fa-lg"></i> Youtube</a>
-                            <a class="nav-link" href="#"><i class="fa-brands fa-twitter fa-lg"></i> Twitter</a>
-                            <a class="nav-link" href="#"><i class="fa-brands fa-facebook fa-lg"></i> Facebook</a>
-                        </div>
-                    </nav>
-                </div>
-                <hr width="100%" />
-                <div class="col-md-4">
-                    <nav class="nav flex-column" style="border: none!important;">
-                        <div class="nav-title">
-                            <h6 style="display: block; padding: .5rem 1rem;">DatMovie</h6>
-                        </div>
-                        <div class="nav-items">
-                            <a class="nav-link" href="sobre">Sobre</a>
-                            <a class="nav-link" href="politica">Politica de Privacidade</a>
-                            <a class="nav-link" href="devs">Desenvolvedores</a>
-                        </div>
-                    </nav>
-                </div>
+            <div class="nav-items">
+              <a class="nav-link" href="">Home</a>
+              <a class="nav-link" href="discover/filmes">Filmes</a>
+              <a class="nav-link" href="discover/series">Séries</a>
+              <a class="nav-link" href="discover/animes">Animes</a>
             </div>
-            <hr width="100%" />
-            <blockquote class="blockquote text-center">
-                <p class="mb-0 text-monospace">Todos os direitos reservados - DatMovie<sup>&copy</sup></p>
-                <footer class="blockquote-footer">Desenvolvido por <cite title="Fabricio de Souza Silva"><a
-                            href="https://www.linkedin.com/in/fabricio-souza-0550aa239/">Fabricio</a></cite>
-                </footer>
-            </blockquote>
+          </nav>
         </div>
-    </footer>
+        <hr width="100%" />
+        <div class="col-md-4">
+          <nav class="nav flex-column">
+            <div class="nav-title">
+              <h6 style="display: block; padding: 0.5rem 1rem">
+                Contate-nos
+              </h6>
+            </div>
+            <div class="nav-items">
+              <a class="nav-link" href="#"><i class="fa-brands fa-instagram fa-lg"></i> Instagram</a>
+              <a class="nav-link" href="#"><i class="fa-brands fa-youtube fa-lg"></i> Youtube</a>
+              <a class="nav-link" href="#"><i class="fa-brands fa-twitter fa-lg"></i> Twitter</a>
+              <a class="nav-link" href="#"><i class="fa-brands fa-facebook fa-lg"></i> Facebook</a>
+            </div>
+          </nav>
+        </div>
+        <hr width="100%" />
+        <div class="col-md-4">
+          <nav class="nav flex-column" style="border: none !important">
+            <div class="nav-title">
+              <h6 style="display: block; padding: 0.5rem 1rem">DatMovie</h6>
+            </div>
+            <div class="nav-items">
+              <a class="nav-link" href="sobre">Sobre</a>
+              <a class="nav-link" href="politica">Politica de Privacidade</a>
+              <a class="nav-link" href="devs">Desenvolvedores</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <hr width="100%" />
+      <blockquote class="blockquote text-center">
+        <p class="mb-0 text-monospace">
+          Todos os direitos reservados - DatMovie<sup>&copy</sup>
+        </p>
+        <footer class="blockquote-footer">
+          Desenvolvido por
+          <cite title="Fabricio de Souza Silva"><a
+              href="https://www.linkedin.com/in/fabricio-souza-0550aa239/">Fabricio</a></cite>
+        </footer>
+      </blockquote>
+    </div>
+  </footer>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/6de25c2b47.js" crossorigin="anonymous"></script>
 <script src="app/lib/Js/main.js"></script>
 {% block additionalScripts %}{% endblock %}

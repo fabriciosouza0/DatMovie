@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/* $(document).ready(function () {
 
     $("#submit-cadastro").click(function (e) {
         e.preventDefault();
@@ -11,36 +11,36 @@ $(document).ready(function () {
 
         let page = '../controller/cadastro.php';
 
-        /* if (email == '' || senha == '') {
+        if (email == '' || senha == '') {
             $('div#alert-login').show();
             $('span#msg').text('E-mail ou senha incorretos!');
             return;
-        } */
+        }
 
         $.ajax({
             type: "POST",
             url: page,
             data: {
-                /* email: email,
-                senha: senha */
+                email: email,
+                senha: senha
             },
             dataType: 'json',
             success: (dados) => {
-                /* if (!dados.estado) {
+                if (!dados.estado) {
                     $('div#alert-login').show();
                     $('span#msg').text(dados.msg);
                     return;
                 }
-                window.location.href = "../view/recuperar_senha.php"; */
+                window.location.href = "../view/recuperar_senha.php";
             },
             erro: (dados, statusText, xhr) => {
-                /* console.log(dados, statusText, xhr); */
+                console.log(dados, statusText, xhr);
             }
         });
     });
 
-    /* $('#fechar').click(function () {
+    $('#fechar').click(function () {
         $('div#alert-login').hide();
-    }); */
+    });
 
-});
+}); */

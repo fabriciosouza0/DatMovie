@@ -1,124 +1,144 @@
-{% extends 'Template/structure.html' %}
-
-{% block theme %}{{theme}}{% endblock %}
-
+{% extends 'Template/structure.html' %} {% block theme %}{{theme}}{% endblock %}
 {% block css %}
-<link rel="stylesheet" href="app/lib/Style/discover.css">
-{% endblock %}
-
-{% block title %}{{title}}{% endblock %}
-
-{% block content %}
+<link rel="stylesheet" href="app/lib/Style/discover.css" />
+{% endblock %} {% block title %}{{title}}{% endblock %} {% block content %}
 <div class="row" id="resultados_row">
-    <div class="col-md-12">
-        <h5 class="section-title">Resultados</h5>
-        <hr style="margin-bottom: 0.5rem; width: 100%; height: 0.3em; background-color: brown;" />
-    </div>
+  <div class="col-md-12">
+    <h5 class="section-title">Resultados para: {{search}}</h5>
+    <hr
+      style="
+        margin-bottom: 0.5rem;
+        width: 100%;
+        height: 0.3em;
+        background-color: brown;
+      "
+    />
+  </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        {% if isEmpty %}
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <img style="text-align: center; max-width: 300px;" src="app/lib/Style/Images/emoji-face-circle-sad-png.webp"
-                alt="" srcset="">
-            <h5 style="text-align: center; padding: 1.2rem;">Nenhum resultado encontrado para: <b>{{search}}</b></h5>
-        </div>
-        <style>
-            #resultados_row {
-                display: none;
-            }
-        </style>
-        {% else %}
-        <div class="c-wrapper">
-            {% for search in all.results %}
-            {% set img_path = 'app/lib/Style/Images/img-not-found.png' %}
-
-            {% if search.poster_path != null %}
-            {% set img_path = 'https://image.tmdb.org/t/p/original' ~ search.poster_path %}
-            {% endif %}
-
-            {% if search.media_type == 'movie' %}
-            {% set media_type = 'filme' %}
-            {% endif %}
-
-            {% if search.media_type == 'tv' %}
-            {% set media_type = 'serie' %}
-            {% endif %}
-
-            {% if search.media_type == 'penson' %}
-            {% set media_type = 'pessoa' %}
-            {% endif %}
-
-            <div class="c">
-                <div class="c-content">
-                    <div class="c-header">
-                        <a href="{{media_type}}/detalhes/{{search.id}}">
-                            <img class="img-fluid" src="{{img_path}}" />
-                        </a>
-                    </div>
-                    <div class="c-body">
-                        <a href="{{media_type}}/detalhes/{{search.id}}">
-                            {% if search.media_type == 'movie' %}
-                            <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{search.title}}</p>
-                            {% endif %}
-                            {% if search.media_type == 'tv' %}
-                            <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{search.name}}</p>
-                            {% endif %}
-                            {% if search.media_type == 'penson' %}
-                            <p style="font-weight: bold; font-size: 1rem; margin: 0;">{{search.title}}</p>
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div class="c-footer">
-                        <i class="fa-solid fa-star star"></i> {{search.vote_average}}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <section id="page">
-            <nav aria-label="Navegação de página exemplo">
-                <ul class="pagination justify-content-center">
-                    {% if pagination.before < 1 %}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="search/all/{{search}}/{{pagination.before}}"
-                            tabindex="-1">Anterior</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="search/all/{{search}}/{{pagination.before}}"
-                            tabindex="-1">Anterior</a>
-                    </li>
-                    {% endif %}
-
-                    {% for i in pagination.itens %}
-                    {% if page == i %}
-                    <li class="page-item disabled">
-                        <a class="page-link active-link" href="search/all/{{search}}/{{i}}">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="search/all/{{search}}/{{i}}">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-
-                    {% if pagination.next >= all.total_pages %}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="search/all/{{search}}/{{pagination.next}}" tabindex="-1">Próximo</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="search/all/{{search}}/{{pagination.next}}" tabindex="-1">Próximo</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </section>
-        {% endif %}
+  <div class="col-md-12">
+    {% if isEmpty %}
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <img
+        style="text-align: center; max-width: 300px"
+        src="app/lib/Style/Images/emoji-face-circle-sad-png.webp"
+        alt=""
+        srcset=""
+      />
+      <h5 style="text-align: center; padding: 1.2rem">
+        Nenhum resultado encontrado para: <b>{{search}}</b>
+      </h5>
     </div>
+    <style>
+      #resultados_row {
+        display: none;
+      }
+    </style>
+    {% else %}
+    <div class="c-wrapper">
+      {% for search in all.results %} {% set img_path =
+      'app/lib/Style/Images/img-not-found.png' %} {% if search.poster_path !=
+      null %} {% set img_path = 'https://image.tmdb.org/t/p/original' ~
+      search.poster_path %} {% endif %} {% if search.media_type == 'movie' %} {%
+      set media_type = 'filme' %} {% endif %} {% if search.media_type == 'tv' %}
+      {% set media_type = 'serie' %} {% endif %} {% if search.media_type ==
+      'penson' %} {% set media_type = 'pessoa' %} {% endif %}
+      <div class="c">
+        <div class="c-content">
+          <div class="c-header">
+            <a href="detalhes/{{media_type}}/{{search.id}}">
+              <img class="img-fluid" src="{{img_path}}" />
+            </a>
+          </div>
+          <div class="c-body">
+            <a href="detalhes/{{media_type}}/{{search.id}}">
+              {% if search.media_type == 'movie' %}
+              <p style="font-weight: bold; font-size: 1rem; margin: 0">
+                {{search.title}}
+              </p>
+              {% endif %} {% if search.media_type == 'tv' %}
+              <p style="font-weight: bold; font-size: 1rem; margin: 0">
+                {{search.name}}
+              </p>
+              {% endif %} {% if search.media_type == 'penson' %}
+              <p style="font-weight: bold; font-size: 1rem; margin: 0">
+                {{search.title}}
+              </p>
+              {% endif %}
+            </a>
+          </div>
+          <div class="c-footer">
+            <i class="fa-solid fa-star star"></i> {{search.vote_average}}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <section id="page">
+      <nav aria-label="Navegação de página exemplo">
+        <ul class="pagination justify-content-center">
+          {% if pagination.before < 1 %}
+          <li class="page-item disabled">
+            <a
+              class="page-link"
+              href="search/all?search={{search}}&page={{pagination.before}}"
+              tabindex="-1"
+              >Anterior</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="search/all?search={{search}}&page={{pagination.before}}"
+              tabindex="-1"
+              >Anterior</a
+            >
+          </li>
+          {% endif %} {% for i in pagination.itens %} {% if page == i %}
+          <li class="page-item disabled">
+            <a
+              class="page-link active-link"
+              href="search/all?search={{search}}&page={{i}}"
+              >{{i}}</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="search/all?search={{search}}&page={{i}}"
+              >{{i}}</a
+            >
+          </li>
+          {% endif %} {% endfor %} {% if pagination.next >= all.total_pages %}
+          <li class="page-item disabled">
+            <a
+              class="page-link"
+              href="search/all?search={{search}}&page={{pagination.next}}}"
+              tabindex="-1"
+              >Próximo</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="search/all?search={{search}}&page={{pagination.next}}}"
+              tabindex="-1"
+              >Próximo</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </section>
+    {% endif %}
+  </div>
 </div>
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
+{% endblock %} {% block footer %} {% endblock %}

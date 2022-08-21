@@ -8,8 +8,8 @@ use PDOException;
 
 abstract class Connection
 {
-    private static $banco = 'gerenciamentopedagogico';
-    private static $usuario = 'root';
+    private static $banco = 'datmovie';
+    private static $usuario = '';
     private static $senha = '';
     private static $host = 'localhost';
     private static $conn;
