@@ -67,6 +67,20 @@ const request = (baseUrl, mediaType, order, genre) => {
 
   if (!$.contains(mediaContent, divLoading)) mediaContent.append(divLoading); //Add animation of loading after container
 
+  let target;
+
+  switch (mediaType) {
+    case 'filme':
+      target = 'filme';
+      break;
+    case 'serie':
+      target = 'serie';
+      break;
+    case 'anime':
+      target = 'serie';
+      break;
+  }
+
   $.ajax({
     url: baseUrl,
     data: { mediaType: mediaType, page: p, order: order, genre: genre },
@@ -81,12 +95,12 @@ const request = (baseUrl, mediaType, order, genre) => {
           '<div class="c">' +
           '<div class="c-content">' +
           '<div class="c-header">' +
-          '<a href="detalhes/' + mediaType + '/' + result.id + '">' +
+          '<a href="detalhes/' + target + '/' + result.id + '">' +
           '<img class="img-fluid" src="' + imgSrc + '" />' +
           '</a>' +
           '</div>' +
           '<div class="c-body">' +
-          '<a href="detalhes/' + mediaType + '/' + result.id + '">' +
+          '<a href="detalhes/' + target + '/' + result.id + '">' +
           '<p style="font-weight: bold; font-size: 1rem; margin: 0">' + title + '</p>' +
           '</a>' +
           '</div>' +
