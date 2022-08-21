@@ -41,13 +41,7 @@ const load = (e) => {
     entries.forEach((entrie) => {
       if (entrie.isIntersecting) {
         let url = window.location;
-        let baseUrl =
-          url.protocol +
-          "//" +
-          url.host +
-          "/" +
-          url.pathname.split("/")[1] +
-          "app/Model/LoadMoreModel.php";
+        let baseUrl = url.protocol + "//" + url.host + "/" + "app/Model/LoadMoreModel.php";
 
         console.log(baseUrl);
 
