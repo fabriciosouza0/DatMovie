@@ -106,7 +106,7 @@ const request = (baseUrl, mediaType, order, genre) => {
       p++;
     },
     error: (jqx, textStatus) => {
-      alert(jqx, textStatus);
+      console.log(jqx, textStatus);
     },
     complete: () => {
       divLoading.remove();
