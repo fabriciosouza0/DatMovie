@@ -73,6 +73,7 @@
           {% set target = 'filme' %}
         {% elseif media_type == 'serie' %}
           {% set mediaTitle = item.name %}
+          {% set target = 'serie' %}
         {% else %}
           {% set mediaTitle = item.name %}
           {% set target = 'serie' %}
