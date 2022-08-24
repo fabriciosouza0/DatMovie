@@ -11,7 +11,7 @@ class TMDB_api
 
     public function __construct($key = null)
     {
-        $this->key = TMDB_config::getTmdbApiKey();
+        $this->key = getenv('ApiKey');
         $this->isEmpty = false;
 
         $this->pagination = array(
