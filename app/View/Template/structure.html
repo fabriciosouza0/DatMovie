@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#000" />
-  <base href="https://datmovie.herokuapp.com/" />
+  <base href="http://localhost:8980/" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="app/lib/Style/Favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="app/lib/Style/Favicon/favicon-32x32.png" />
@@ -21,7 +21,7 @@
   <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body onload="onload()">
+<body onload="onload()" style="overflow: hidden;">
   <div class="flex align-items-center justify-content-center loading" id="load">
     <section class="section">
       <span class="loader loader-circles"></span>

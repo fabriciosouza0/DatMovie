@@ -8,6 +8,7 @@ class TMDB_api
 {
     private $key;
     private $isEmpty;
+    private $pagination;
 
     public function __construct($key = null)
     {
@@ -30,7 +31,6 @@ class TMDB_api
     {
         $baseUrl = TMDB_config::getTmdbBaseUrl();
         $key = $this->key;
-
         $uri = $baseUrl . $endpoint . '?api_key=' . $key;
 
         if (is_array($params)) {

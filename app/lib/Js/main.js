@@ -1,5 +1,6 @@
 const onload = () => {
   $("#load").remove();
+  $("body").css("overflow", "auto");
 
   const page = document.title.slice(0, 6);
 

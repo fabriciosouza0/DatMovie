@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8980:80"
+    env_file:
+      - ./.env
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - php
+    container_name: web-dat-movie
+
+  php:
+    image: php:8.1-fpm
+    env_file:
+      - ./.env
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    container_name: php-dat-movie

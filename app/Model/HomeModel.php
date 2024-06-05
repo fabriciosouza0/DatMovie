@@ -11,9 +11,7 @@ abstract class HomeModel
     public static function destaques($qtd = 3)
     {
         if (self::$tmdbApi == null) self::$tmdbApi = new TMDB_api();
-        $params = array(
-            'language' => 'pt-BR',
-        );
+        $params = ['language' => 'pt-BR'];
 
         $data = self::$tmdbApi->request('movie/top_rated', $params);
         shuffle($data['results']);

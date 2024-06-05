@@ -239,6 +239,7 @@ div#destaques .swiper-wrapper .swiper-slide {
   height: 100%;
   width: 100%;
   z-index: 1000;
+  overflow: hidden !important;
 }
 
 .section {

@@ -8,10 +8,10 @@ use PDOException;
 
 abstract class Connection
 {
-    private static $banco = 'datmovie';
-    private static $usuario = '';
-    private static $senha = '';
-    private static $host = 'localhost';
+    private static $banco = getenv("banco");
+    private static $usuario = getenv("usuario");
+    private static $senha = getenv("senha");
+    private static $host = getenv("host");
     private static $conn;
 
     public static function connect()
